@@ -1,0 +1,30 @@
+#title_thesis{
+	width: 100%;
+	text-align: center;
+}
+
+#subject_thesis{
+	width: 100%;
+	text-align: center;
+}
+
+#author_thesis{
+	width: 100%;
+	text-align: center;
+}
+
+#image_thesis img{
+	display: block;
+	margin: auto;
+}
+
+#date_thesis{
+	width: 100%;
+	text-align: center;
+
+}
+
+#site_thesis{
+	width: 100%;
+	text-align: center;
+}

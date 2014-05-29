@@ -1,0 +1,21 @@
+#extra_image img{
+	display: block;
+	margin: auto;
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+#extra_title{
+	width: 100%;
+	text-align: center;
+}
+
+#extra_date{
+	width: 100%;
+	text-align: center;
+}
+
+#extra_price{
+	width: 100%;
+	text-align: center;
+}

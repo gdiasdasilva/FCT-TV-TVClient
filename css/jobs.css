@@ -1,0 +1,19 @@
+#job_image{
+	margin-top: 10%;
+}
+
+
+#job_image img{
+	display: block;
+	margin: auto;
+}
+
+#job_title{
+	width: 100%;
+	text-align: center;
+}
+
+#job_department{
+	width: 100%;
+	text-align: center;
+}
