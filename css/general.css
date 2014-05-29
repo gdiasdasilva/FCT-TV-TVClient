@@ -15,7 +15,8 @@ body{
 }
 
 .hidden{
-	visibility: hidden;
+	/*visibility: hidden;*/
+	display: none;
 }
 
 #general{
@@ -58,6 +59,8 @@ body{
 
 #type{
 	position: relative;
+	font-weight: bold;
+	text-align: center;
 }
 
 #video_player{

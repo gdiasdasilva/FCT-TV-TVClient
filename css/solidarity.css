@@ -1,15 +1,13 @@
 #solidarity_image{
 	margin-top: 15%;
-	background-color: green;
+	margin-left: 5%;
 	float: left;
 }
 #solidarity_image img{
-	left: 50%;
 }
 #solidarity_general{
 	margin-top: 20%;
 	left: -20%;	
-	background-color: red;
 	position: relative;
 	float: right;
 }
@@ -31,5 +29,4 @@
 }
 
 #solidarity{
-	background-color: pink;
 }

@@ -8,11 +8,11 @@ var dummyJob = JSON.parse('{"type": "Jobs", "job_image": "job_picture.jpg", "job
  
 var dummyConference = JSON.parse('{"type": "Conference", "conference_title": "Distinguished Lectures", "conference_image": "conference.jpg", "conference_speaker": "Leslie Lamport", "conference_date": "2014-09-17", "conference_site": "Grande Auditório"}');
  
-var dummyVideo = JSON.parse('{"type": "Video", "video_title": "Titulo do video", "video_url": "http://www.youtube.com/watch?v=IGSg7mGCQ5E", "video_date": "2014-05-27", "video_site": "Edifício VII"}');
+var dummyVideo = JSON.parse('{"type": "Video", "video_title": "Titulo do video", "video_url": "http://www.youtube.com/embed/juVziawQpCU", "video_date": "2014-05-27", "video_site": "Edifício VII"}');
  
 var dummyPedagogical = JSON.parse('{"type": "Pedagogical", "pedagogical_title": "NovaSBE vai mudar-se para a caparica", "pedagogical_text": "A escola de economia e gestão da Nova vai mudar-se para o campus da caparica em 2020. Preparem-se para a invasão." }');
  
-var dummySolidarity = JSON.parse('{"type": "Solidarity", "solidarity_title": "Dar Sangue", "solidarity_image": "job_picture.jpg", "solidarity_site": "Sala Ágora", "solidarity_time": "21 de Maio"}');
+var dummySolidarity = JSON.parse('{"type": "Solidarity", "solidarity_title": "Colheita de Sangue", "solidarity_image": "job_picture.jpg", "solidarity_site": "Sala Ágora", "solidarity_time": "21 de Maio"}');
 
 var dummyAwards = JSON.parse('{"type": "Awards", "awards_title": "Professora Ana Lobo distinguida pela Royal Society of Chemistry de Londres", "awards_image": "awards_image.jpg"}');
  
@@ -22,11 +22,11 @@ var array = [dummyMenu, dummyExtra, dummyWorkshop, dummyJob, dummyConference, du
 
 
 var footer_news = JSON.parse('{"news": ["Passos deixa mensagem de alento ao PSD para se posicionar para legislativas", "&quot;Fartei-me de rir&quot;, diz Bruno de Carvalho sobre entrevista de Luís Filipe Vieira", "FILIPA PELEJA, ESTUDANTE DE DOUTORAMENTO DA FCT DA NOVA ALCANÇOU O 1º LUGAR NA ÚLTIMA EDIÇÃO DOS ZON DEVDAYS 2015 COM &quot;SOCIAL NOS&quot;.", "Alunos da FCT da NOVA vencem na 5ª edição do NOVA Idea Competition - Prémio BPI", "Estrutura 3D da Aldeído Oxidase Periplásmica PaoABC revelando o seu centro activo de Molibdénio e centros redox", "Costa vai pedir congresso se Seguro não o convocar", "eigth-news", "Apple compra Beats e entra na música por subscrição", "CDS admite resultado &quot;historicamente baixo&quot;"]}');
-var s;
+var s,y;
  
 $(document).ready(function() {
 	startTime();
-    //b();
+    b();
     $("#footer_ticker").easyTicker({
 		direction: 'up',
 		easing: 'swing',
@@ -45,21 +45,20 @@ $(document).ready(function() {
 	});
 });
 
-// PROBLEMAAAAAAA NAS TESES
 function b(){
 	var i=0;
-	setInterval(function(){a(i++)}, 2000);
+	setInterval(function(){a(i++)}, 5000);
 	//a(i);
 }
 
-function animate(s){
-	setTimeout(function(){
-		$(s).css({visibility: "hidden"
-	});
+function animate(s,y){
+	
+	$(s).fadeOut();
 	$("#type").empty();
-	},1000);
 
-
+	if(y != null){
+		$(y).remove();
+	}
 }
 
 function checkTime(i) {
@@ -111,7 +110,7 @@ function code(dummyMenuObject){
 					'</div>');
 			
 			s="#menus";
-			animate(s);
+			setTimeout(function(){animate(s);},4250);
 		}
 
 		else if(dummyMenuObject.type == "Extra")
@@ -135,7 +134,7 @@ function code(dummyMenuObject){
 						"</div>" +
 					"</div>");
 			s="#extra";
-			animate(s);
+			setTimeout(function(){animate(s);},4250);
 		}
 
 		else if(dummyMenuObject.type == "Workshops")
@@ -160,7 +159,7 @@ function code(dummyMenuObject){
 					"</div>" +
 				"</div>");
 			s="#workshops";
-			animate(s);
+			setTimeout(function(){animate(s);},4250);
 		}
 
 		else if(dummyMenuObject.type == "Jobs")
@@ -179,7 +178,7 @@ function code(dummyMenuObject){
 					"</div>" +
 				"</div>");	
 			s="#jobs";
-			animate(s);
+			setTimeout(function(){animate(s);},4250);
 		}
 		
 		else if(dummyMenuObject.type == "Conference")
@@ -204,13 +203,17 @@ function code(dummyMenuObject){
 					"</div>" +
 				"</div>");	
 			s="#conference";
-			animate(s);
+			setTimeout(function(){animate(s);},4250);
 		}
 		
 		else if(dummyMenuObject.type == "Video")
 		{
 			$("#type").append(dummyMenuObject.type);
 
+			$("#content").append("<iframe id='video_player' width='100%' height='100%'" +
+			 "src=" + dummyMenuObject.video_url + "?autoplay=1&controls=0&showinfo=0&enablejsapi=1 frameborder='0' allowfullscreen>" + 
+			 "</iframe>");
+			
 			/*  FALTA PASAR O VIDEO EM FULL SCREEN  */
 			$("#general_container").append("<div id='video'>" +
 					"<div id='video_title'>" +
@@ -226,13 +229,13 @@ function code(dummyMenuObject){
 					"</div>" +
 				"</div>");
 			s="#video";
-			animate(s);
+			y="#video_player";
+			setTimeout(function(){animate(s,y);},4250);
 		}
 		
 		else if(dummyMenuObject.type == "Pedagogical")
 		{
 			$("#type").append(dummyMenuObject.type);
-
 			$("#general_container").append("<div class='general_content' id='pedagogical'>" +
 					"<div id='pedagogical_title'>" +
 					"<span class='text'>" + dummyMenuObject.pedagogical_title + "</span>" +
@@ -242,7 +245,7 @@ function code(dummyMenuObject){
 					"</div>" +
 				"</div>");
 			s="#pedagogical";
-			animate(s);
+			setTimeout(function(){animate(s);},4250);
 		}
 
 		else if(dummyMenuObject.type == "Solidarity")
@@ -255,7 +258,7 @@ function code(dummyMenuObject){
 					"</div>" +
 					"<div id='solidarity_general'>" +
 						"<div id='solidarity_title'>" +
-						"<span class='text'>" + dummyMenuObject.solidarity_title + "</span>" +
+						"<span class='text'><strong>" + dummyMenuObject.solidarity_title + "</strong></span>" +
 						"</div>" +
 						"<div id='solidarity_site'>" +
 						"<span class='text'>" + dummyMenuObject.solidarity_site + "</span>" +
@@ -266,7 +269,7 @@ function code(dummyMenuObject){
 					"</div>" +
 				"</div>");
 			s="#solidarity";
-			animate(s);
+			setTimeout(function(){animate(s);},4250);
 		}
 		
 		else if(dummyMenuObject.type == "Awards")
@@ -282,11 +285,11 @@ function code(dummyMenuObject){
 					"</div>" +
 				"</div>");
 			s="#awards";
-			animate(s);
+			setTimeout(function(){animate(s);},4250);
 		}
 
 		else if(dummyMenuObject.type == "Thesis")
-		{/*PROBLEMMAAAAAAAAA*/
+		{
 			$("#type").append(dummyMenuObject.type);
 
 			$("#general_container").append("<div class='general_content' id='thesis'>" +
@@ -307,7 +310,7 @@ function code(dummyMenuObject){
 					"</div>" +
 				"</div>");
 			s="#thesis";
-			animate(s);
+			setTimeout(function(){animate(s);},4250);
 		}
 }
 
