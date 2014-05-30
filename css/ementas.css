@@ -8,7 +8,8 @@
 #caseload{
 	position: relative;
 	float: right;
-	margin-right: 8%;
+	width: 60%;
+	margin-right: 5%;
 	margin-top: -2%;
 }
 

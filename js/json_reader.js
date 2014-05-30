@@ -1,14 +1,14 @@
-var dummyMenu = JSON.parse('{"type": "Menus", "restaurant_image" : "teste.jpg", "restaurant_name" : "Teresa Gato", "restaurant_menu" : { "first_plate" : "Feijões com couves", "second_plate" : "Couves com feijões", "third_plate": "sardinhas" }, "restaurant_price" : "2.95" }');
+var dummyMenu = JSON.parse('{"type": "Menus", "restaurant_image" : "images/food.jpg", "restaurant_name" : "Teresa Gato", "restaurant_menu" : { "first_plate" : "Feijões com couves", "second_plate" : "Couves com feijões", "third_plate": "Sardinhas assadas com batatas" }, "restaurant_price" : "2.95" }');
  
-var dummyExtra = JSON.parse('{"type": "Extra", "extra_image": "extracurricular.jpg", "extra_title": "Curso de inglês", "extra_date": "2014-05-27", "extra_price": "€250"}');
+var dummyExtra = JSON.parse('{"type": "Extra", "extra_image": "images/english.jpg", "extra_title": "Curso de inglês", "extra_date": "2014-05-27", "extra_price": "€250"}');
  
-var dummyWorkshop = JSON.parse('{"type": "Workshops", "workshop_image": "workshop_picture.jpg", "workshop_title": "Workshop de tiro com Arco", "workshop_day": "2012-04-25", "workshop_time": "22:30", "workshop_site": "Jardim Biblioteca"}');
+var dummyWorkshop = JSON.parse('{"type": "Workshops", "workshop_image": "images/archery.jpg", "workshop_title": "Workshop de tiro com Arco", "workshop_day": "2012-04-25", "workshop_time": "22:30", "workshop_site": "Jardim Biblioteca"}');
 
-var dummyJob = JSON.parse('{"type": "Jobs", "job_image": "job_picture.jpg", "job_title": "Assistente de Segurança", "job_department": "Departamento de Informática"}');
+var dummyJob = JSON.parse('{"type": "Jobs", "job_image": "images/coding.jpg", "job_title": "Procura-se Assistente de Segurança", "job_department": "Departamento de Informática"}');
  
 var dummyConference = JSON.parse('{"type": "Conference", "conference_title": "Distinguished Lectures", "conference_image": "conference.jpg", "conference_speaker": "Leslie Lamport", "conference_date": "2014-09-17", "conference_site": "Grande Auditório"}');
  
-var dummyVideo = JSON.parse('{"type": "Video", "video_title": "Titulo do video", "video_url": "http://www.youtube.com/embed/juVziawQpCU", "video_date": "2014-05-27", "video_site": "Edifício VII"}');
+var dummyVideo = JSON.parse('{"type": "Video", "video_title": "Expo FCT", "video_url": "http://www.youtube.com/embed/juVziawQpCU", "video_date": "2014-05-27", "video_site": "Edifício VII"}');
  
 var dummyPedagogical = JSON.parse('{"type": "Pedagogical", "pedagogical_title": "NovaSBE vai mudar-se para a caparica", "pedagogical_text": "A escola de economia e gestão da Nova vai mudar-se para o campus da caparica em 2020. Preparem-se para a invasão." }');
  
@@ -32,7 +32,7 @@ $(document).ready(function() {
 		easing: 'swing',
 		speed: 'medium',
 		height: '80%',
-		interval: 2000,
+		interval: 3000,
 		visible: 1,
 		mousePause: 1,
 		controls: {
@@ -47,7 +47,8 @@ $(document).ready(function() {
 
 function b(){
 	var i=0;
-	setInterval(function(){a(i++)}, 5000);
+	a(i++);
+	setInterval(function(){a(i++)}, 8000);
 	//a(i);
 }
 
@@ -95,22 +96,22 @@ function code(dummyMenuObject){
 							'</div>'+
 							'<div id= "caseload">' +
 								'<div id="restaurant_name">' +
-								'<h1>' + dummyMenuObject.restaurant_name +'<h1>' +
+								'<span class="text"><b>Estabelecimento: </b>' + dummyMenuObject.restaurant_name +'</span>' +
 								'</div>' +
 								'<div id="restaurant_menu">' +
-								'<h2 class ="lead">First Plate: ' + dummyMenuObject.restaurant_menu.first_plate +'</h2>' +
-								'<h2>Second Plate: ' + dummyMenuObject.restaurant_menu.second_plate + '</h2>' +
-								'<h2>Third Plate: ' + dummyMenuObject.restaurant_menu.third_plate + '</h2>' +
+								'<span class="text"><b>Prato principal:</b> ' + dummyMenuObject.restaurant_menu.first_plate +'</span><br>' +
+								'<span class="text"><b>Prato secundário:</b> ' + dummyMenuObject.restaurant_menu.second_plate + '</span><br>' +
+								'<span class="text"><b>Prato extra:</b> ' + dummyMenuObject.restaurant_menu.third_plate + '</span><br>' +
 								'</div>' +
 								'<div id="restaurant_prices">' +
-								'<h2>' + dummyMenuObject.restaurant_price +'€</h2>' +
+								'<span class="text"><b>Preço: </b>' + dummyMenuObject.restaurant_price +'€</span>' +
 								'</div>' +
 							'</div>' +
 						'</div>' +
 					'</div>');
 			
 			s="#menus";
-			setTimeout(function(){animate(s);},4250);
+			setTimeout(function(){animate(s);},7250);
 		}
 
 		else if(dummyMenuObject.type == "Extra")
@@ -134,7 +135,7 @@ function code(dummyMenuObject){
 						"</div>" +
 					"</div>");
 			s="#extra";
-			setTimeout(function(){animate(s);},4250);
+			setTimeout(function(){animate(s);},7250);
 		}
 
 		else if(dummyMenuObject.type == "Workshops")
@@ -159,7 +160,7 @@ function code(dummyMenuObject){
 					"</div>" +
 				"</div>");
 			s="#workshops";
-			setTimeout(function(){animate(s);},4250);
+			setTimeout(function(){animate(s);},7250);
 		}
 
 		else if(dummyMenuObject.type == "Jobs")
@@ -178,7 +179,7 @@ function code(dummyMenuObject){
 					"</div>" +
 				"</div>");	
 			s="#jobs";
-			setTimeout(function(){animate(s);},4250);
+			setTimeout(function(){animate(s);},7250);
 		}
 		
 		else if(dummyMenuObject.type == "Conference")
@@ -203,7 +204,7 @@ function code(dummyMenuObject){
 					"</div>" +
 				"</div>");	
 			s="#conference";
-			setTimeout(function(){animate(s);},4250);
+			setTimeout(function(){animate(s);},7250);
 		}
 		
 		else if(dummyMenuObject.type == "Video")
@@ -230,7 +231,7 @@ function code(dummyMenuObject){
 				"</div>");
 			s="#video";
 			y="#video_player";
-			setTimeout(function(){animate(s,y);},4250);
+			setTimeout(function(){animate(s,y);},7250);
 		}
 		
 		else if(dummyMenuObject.type == "Pedagogical")
@@ -245,7 +246,7 @@ function code(dummyMenuObject){
 					"</div>" +
 				"</div>");
 			s="#pedagogical";
-			setTimeout(function(){animate(s);},4250);
+			setTimeout(function(){animate(s);},7250);
 		}
 
 		else if(dummyMenuObject.type == "Solidarity")
@@ -269,7 +270,7 @@ function code(dummyMenuObject){
 					"</div>" +
 				"</div>");
 			s="#solidarity";
-			setTimeout(function(){animate(s);},4250);
+			setTimeout(function(){animate(s);},7250);
 		}
 		
 		else if(dummyMenuObject.type == "Awards")
@@ -285,7 +286,7 @@ function code(dummyMenuObject){
 					"</div>" +
 				"</div>");
 			s="#awards";
-			setTimeout(function(){animate(s);},4250);
+			setTimeout(function(){animate(s);},7250);
 		}
 
 		else if(dummyMenuObject.type == "Thesis")
@@ -294,7 +295,7 @@ function code(dummyMenuObject){
 
 			$("#general_container").append("<div class='general_content' id='thesis'>" +
 					"<div id='title_thesis'>" +
-					"<span class='text lead'>" + dummyMenuObject.thesis_title + "</span>" +
+					"<span class='text'>" + dummyMenuObject.thesis_title + "</span>" +
 					"</div>" +
 					"<div id='subject_thesis'>" +
 					"<span class='text'>" + dummyMenuObject.subject_thesis + "</span>" +
@@ -310,7 +311,7 @@ function code(dummyMenuObject){
 					"</div>" +
 				"</div>");
 			s="#thesis";
-			setTimeout(function(){animate(s);},4250);
+			setTimeout(function(){animate(s);},7250);
 		}
 }
 

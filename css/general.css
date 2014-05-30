@@ -1,5 +1,6 @@
 body{
 	margin: 0;
+	background-color: #F8F8F8 ;
 }
 
 
@@ -11,7 +12,7 @@ body{
 #general{
 	height: 100%;
 	width: 100%;
-	margin: 0;
+	margin: 0; 
 }
 
 #content{
@@ -24,8 +25,6 @@ body{
 	margin-top: 1%;
 	margin-right: 1%;
 	position: relative;
-	background-color:rgba(255, 255, 255, 0.7);	
-	/*opacity: 0.5;*/
 	float: right;
 	z-index: 1;
 }
@@ -33,16 +32,13 @@ body{
 #time{
 	font-size: 50px;
 	text-align: center;
-   /* color: white;
+   	color: white;
  	 text-shadow:
    -1px -1px 0 #000,  
     1px -1px 0 #000,
     -1px 1px 0 #000,
-     1px 1px 0 #000;*/
-
-    
+     1px 1px 0 #000; 
 }
-
 
 #logo_container{
 	margin-top: 1%;
@@ -54,7 +50,6 @@ body{
 	z-index: 1;
 }
 
-
 #logo{
 	border: 1px solid black;
 	height: 80%;
@@ -63,6 +58,7 @@ body{
 
 #type{
 	position: relative;
+	font-size: 20px;
 	font-weight: bold;
 	text-align: center;
 }
@@ -95,15 +91,7 @@ body{
 	height: 100%;
 
 }
-/*
-.myWrapper{
-	background-color: black;
-	height: 80%;
-	width: 100%;
-	position: absolute;
-	bottom: 10%;
-}
-*/
+
 
 #footer_ticker{
 	background-color: black;
@@ -123,6 +111,7 @@ body{
 
 #footer_ticker ul li{
 	padding: 0.5%;
+	text-align: center;
 }
 #footer_number{
 	position: relative;
