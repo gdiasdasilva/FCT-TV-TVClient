@@ -1,144 +1,33 @@
-body{
+body {
 	margin: 0;
-	background-color: #F8F8F8 ;
 }
 
-
-.hidden{
-	/*visibility: hidden;*/
-	display: none;
-}
-
-#general{
-	height: 100%;
-	width: 100%;
-	margin: 0; 
-}
-
-#content{
-	position: absolute;
-	height: 90%;
-	width: 100%;
-}
-
-#widgets{
-	margin-top: 1%;
-	margin-right: 1%;
+#outside_container {
+	margin: 0 auto;
+	width: 1920px;
+	height: 1080px;
 	position: relative;
-	float: right;
-	z-index: 1;
+	background-color: lightgrey;
 }
 
-#time{
-	font-size: 50px;
-	text-align: center;
+#logo {
+	height: 150px;
+	width: 150px;
+	position: absolute;
+	left: 25px;
+	top: 25px;
+	background-color: yellow;
+}
+
+#time {
+	position: absolute;
+	right: 25px;
+	top: 15px;
+	font-size: 75px;
    	color: white;
- 	 text-shadow:
-   -1px -1px 0 #000,  
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-     1px 1px 0 #000; 
-}
-
-#logo_container{
-	margin-top: 1%;
-	margin-left: 1%;
-	position: relative;
-	float: left;
-	width: 6%;
-	height: 15%;
-	z-index: 1;
-}
-
-#logo{
-	border: 1px solid black;
-	height: 80%;
-	position: relative;
-}
-
-#type{
-	position: relative;
-	font-size: 20px;
-	font-weight: bold;
-	text-align: center;
-}
-
-#video_player{
-	position: fixed;
-	left: 0;
-	z-index: 0;
-}
-
-.general_content{
-	width: 70%;
-	height: 85%;
-	position: absolute;
-	margin-left: 15%;
-	bottom: 5%;
-}
-
-#footer{
-	position: absolute;
-	bottom: 0px;
-	height: 10%;
-	width: 100%;
-}
-
-#footer_news{
-	position: relative;
-	width: 88%;
-	float: left;
-	height: 100%;
-
-}
-
-
-#footer_ticker{
-	background-color: black;
-	height: 80%;
-	width: 100%;
-	position: absolute;
-	bottom: 10%;
-}
-
-#footer_ticker ul{
-	color: white;
-	list-style-type: none;
-	font-size: 30px;
-	padding-left: 10px;
-
-}
-
-#footer_ticker ul li{
-	padding: 0.5%;
-	text-align: center;
-}
-#footer_number{
-	position: relative;
-	height: 100%;
-	width: 12%;
-	float: right;
-
-}
-#number{
-	background-color: black;
-	height: 80%;
-	position: absolute;
-	bottom: 10%;
-	width: 100%;
-	font-size: 50px;
-	text-align: center;
-	color: white;
-	margin-left: 1px;
-}
-
-#number span{
-	position: relative;
-	bottom: 15%;
-}
-
-.text{
-	font-style: normal;
-	font-size: 35px;
-	
+ 	text-shadow:
+   		-1px -1px 0 #000,  
+    	1px -1px 0 #000,
+    	-1px 1px 0 #000,
+     	1px 1px 0 #000; 
 }
