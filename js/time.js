@@ -11,6 +11,19 @@ $(document).ready(function() {
         mousePause: 1
     });
 
+      $.simpleWeather({
+        location: 'Lisbon, Portugal',
+        woeid: '',
+        unit: 'c',
+        success: function(weather) {
+          html = weather.temp+'&deg;';
+          $("#weather").html(html);
+        },
+        error: function(error) {
+          $("#weather").html('<p>'+error+'</p>');
+        }
+      });
+
     getFeeds();    
     
 });
