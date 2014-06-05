@@ -22,7 +22,7 @@ $(document).ready(function() {
         error: function(error) {
           $("#weather").html('<p>'+error+'</p>');
         }
-    });
+    }); 
 
     getFeeds();
 
@@ -30,7 +30,9 @@ $(document).ready(function() {
         $("#sidebar").fadeIn(3000);
     }, 2000);
 
-    setTimeout(fillFoods, 5000);    
+    setTimeout(fillFoods, 5000); 
+
+   // setTimeout(showPedagogicalMessage, 2000);
 });
 
 var feedNumber = 0;
@@ -146,7 +148,27 @@ function fillFoods(){
     setTimeout(function(){
         $("#cantina").collapse('toggle');
         $("#sidebar").fadeOut("slow");
-    }, 5000)
+    }, 10000)
+}
+
+function showPedagogicalMessage() {
+    $("#content_container").append("<div id='pedagogical_title'>NovaSBE vai mudar-se para a caparica</div>");
+    $("#content_container").append("<div id='pedagogical_message'>A escola de economia e gestão" +
+     " da Nova (Nova SBE) vai mudar-se para o Campus da Caparica em 2020. Já começam os preparativos!</div>");
+
+    $(function () {  
+        $('#pedagogical_title').textillate({ 
+            in: { effect: 'fadeInLeftBig', sync: 'true' }, 
+            out: { effect: 'fadeOutRightBig', sync: 'true' },
+            loop: 'true'
+        }); 
+
+        $('#pedagogical_message').textillate({
+            in: { effect: 'fadeInDownBig', sync: 'true' },
+            out: { effect: 'fadeOutDownBig', sync: 'true'},
+            loop: 'true' 
+        });  
+    }); 
 }
 
 
