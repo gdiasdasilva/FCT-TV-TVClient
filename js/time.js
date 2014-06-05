@@ -11,18 +11,18 @@ $(document).ready(function() {
         mousePause: 1
     });
 
-      $.simpleWeather({
+    $.simpleWeather({
         location: 'Lisbon, Portugal',
         woeid: '',
         unit: 'c',
         success: function(weather) {
-          html = weather.temp+'&deg;';
+          html = '<i class="icon-'+weather.code+'"></i> '+weather.temp+'&deg;';
           $("#weather").html(html);
         },
         error: function(error) {
           $("#weather").html('<p>'+error+'</p>');
         }
-      });
+    });
 
     getFeeds();    
     
