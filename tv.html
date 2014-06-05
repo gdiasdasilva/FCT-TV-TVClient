@@ -15,10 +15,13 @@
 	<script type="text/javascript" src="js/jfeeditem.js"></script>
 	<script type="text/javascript" src="js/jrss.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<script type="text/javascript" src="js/time.js"></script>
 	<script type="text/javascript" src="js/jquery.easy-ticker.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 	<script type="text/javascript" src="js/jquery.simpleWeather.js"></script>
+
+	<script type="text/javascript" src="js/time.js"></script>
+	<script type="text/javascript" src="js/fullscreen.js"></script>
+	
 </head>
 <body>
 
@@ -26,10 +29,29 @@
 	
 	<div id="logo">Logo</div>
 	
-	<div id="time"></div>
+	<div id="time"><!-- As horas sao inseridas aqui --></div>
 
-	<div id="weather">
+	<div id="weather"><!-- A meteorologia vem para aqui --></div>
 
+	<div id="sidebar">
+		<div class="panel-group" id="accordion">
+		  <div class="panel panel-default">
+			    <div class="panel-heading">
+				      <h4 class="panel-title">
+				        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+				          Ementa da Cantina
+				        </a>
+				      </h4>
+			    </div>
+			    <div id="cantina" class="panel-collapse collapse">
+				      <div class="panel-body">
+				        <span id="soup"></span>
+				        <span id="dish"></span>
+				        <span id="diet"></span>
+				      </div>
+			    </div>
+		  </div>
+		</div>
 	</div>
 
 	<div id="content_container"></div>

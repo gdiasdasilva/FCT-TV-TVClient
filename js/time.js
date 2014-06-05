@@ -24,12 +24,19 @@ $(document).ready(function() {
         }
     });
 
-    getFeeds();    
-    
+    getFeeds();
+
+    setTimeout(function(){
+        $("#sidebar").fadeIn(3000);
+    }, 2000);
+
+    setTimeout(fillFoods, 5000);    
 });
 
 var feedNumber = 0;
 var feedURL = "";
+
+var foodTimes = 0;
 
 function getFeeds()
 {
@@ -126,3 +133,20 @@ function startTime() {
         startTime()
     }, 500);
 }
+
+function fillFoods(){
+    var items = [{"dish": ["Arroz de Polvo Salada - 689,6 Kcal  ; Alho Franc\u00eas \u00e0 Braz -649,2 Kcal "], "soup": ["Creme de Legumes C/ vegetais"], "diet": ["Alm\u00f4ndegas Estuf/ Simp/ c/ Espargu/ -580.3 Kcal"]}];
+    
+    $("#soup").html("<strong>Sopa: </strong>" + items[0].soup + "<br>");
+    $("#dish").html("<strong>Prato: </strong>" + items[0].dish + "<br>");
+    $("#diet").html("<strong>Dieta: </strong>" + items[0].diet);
+
+    $("#cantina").collapse('toggle');
+
+    setTimeout(function(){
+        $("#cantina").collapse('toggle');
+        $("#sidebar").fadeOut("slow");
+    }, 5000)
+}
+
+

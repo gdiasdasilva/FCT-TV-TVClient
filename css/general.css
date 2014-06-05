@@ -33,3 +33,12 @@ body {
     	-1px 1px 0 #000,
      	1px 1px 0 #000; 
 }
+
+#sidebar
+{
+	width: 300px;
+	position: absolute;
+	top: 270px;
+	right: 0;
+	display: none;
+}
