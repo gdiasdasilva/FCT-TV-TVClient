@@ -32,7 +32,7 @@ $(document).ready(function() {
 
     setTimeout(fillFoods, 5000); 
 
-   // setTimeout(showPedagogicalMessage, 2000);
+    setTimeout(showPedagogicalMessage, 2000);
 });
 
 var feedNumber = 0;
