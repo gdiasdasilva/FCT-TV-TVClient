@@ -34,15 +34,13 @@ $(document).ready(function() {
 
     setTimeout(showPedagogicalMessage, 2000);
   
-    alert(getContentsFromServer());
-    //getContentsFromServer();
-
 });
 
 var feedNumber = 0;
 var feedURL = "";
 
 var foodTimes = 0;
+var json_content;
 
 function getFeeds()
 {
@@ -156,9 +154,52 @@ function fillFoods(){
 }
 
 function showPedagogicalMessage() {
-    $("#content_container").append("<div id='pedagogical_title'>NovaSBE vai mudar-se para a caparica</div>");
-    $("#content_container").append("<div id='pedagogical_message'>A escola de economia e gestão" +
-     " da Nova (Nova SBE) vai mudar-se para o Campus da Caparica em 2020. Já começam os preparativos!</div>");
+    
+    getContentsFromServer();
+    alert(json_content);
+
+    for(var i = 0; i < parser.length; i++)
+    {
+        if(parser[i].category_id == 1){
+            $("#content_container").append("");
+        }
+
+        else if(parser[i].category_id == 2){
+            $("#content_container").append("");
+        }
+
+        else if(parser[i].category_id == 3){
+            $("#content_container").append("<div id='pedagogical_title'>" +
+                                             parser[i].title +
+                                            "</div>" +
+                                            "<div id='pedagogical_message'>" +
+                                            parser[i].description +
+                                            "</div>");
+
+            $(function () {  
+        $('#pedagogical_title').textillate({ 
+            in: { effect: 'fadeInLeftBig', sync: 'true' }, 
+            out: { effect: 'fadeOutRightBig', sync: 'true' },
+            loop: 'true'
+        }); 
+
+        $('#pedagogical_message').textillate({
+            in: { effect: 'fadeInDownBig', sync: 'true' },
+            out: { effect: 'fadeOutDownBig', sync: 'true'},
+            loop: 'true' 
+        });  
+    });  
+        }
+
+        else if(parser[i].category_id == 4){
+            $("#content_container").append("");
+        }
+
+        else if(parser[i].category_id == 5){
+            $("#content_container").append("");
+        }
+    }
+
 
     $(function () {  
         $('#pedagogical_title').textillate({ 
@@ -176,7 +217,7 @@ function showPedagogicalMessage() {
 }
 
 function getContentsFromServer() {
-    return $.ajax({
+       return $.ajax({
         url: 'http://localhost:3000/contents.json',
         type: 'GET',
         dataType: 'json',
@@ -185,7 +226,7 @@ function getContentsFromServer() {
                     },
         success: function(data)
         {      
-            var parser = JSON.parse(JSON.stringify(data));   
+            json_content = JSON.parse(JSON.stringify(data)); 
         },
         error: function (error) { alert("Erro!"); }
     })
