@@ -33,6 +33,10 @@ $(document).ready(function() {
     setTimeout(fillFoods, 5000); 
 
     setTimeout(showPedagogicalMessage, 2000);
+  
+    alert(getContentsFromServer());
+    //getContentsFromServer();
+
 });
 
 var feedNumber = 0;
@@ -169,6 +173,22 @@ function showPedagogicalMessage() {
             loop: 'true' 
         });  
     }); 
+}
+
+function getContentsFromServer() {
+    return $.ajax({
+        url: 'http://localhost:3000/contents.json',
+        type: 'GET',
+        dataType: 'json',
+        beforeSend: function (xhr) {
+                        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+                    },
+        success: function(data)
+        {      
+            var parser = JSON.parse(JSON.stringify(data));   
+        },
+        error: function (error) { alert("Erro!"); }
+    })
 }
 
 
