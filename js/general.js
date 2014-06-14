@@ -31,8 +31,7 @@ $(document).ready(function() {
     }, 2000);
 
     setTimeout(fillFoods, 5000); 
-
-    //setTimeout(showPedagogicalMessage, 2000);
+    getContentsFromServer();
     selectContent();
 });
 
@@ -166,81 +165,67 @@ function getContentsFromServer() {
 
 function selectContent(){
      var t = getContentsFromServer();
+     var i = -1;
     var x = t.success(function(data)
     {
         json_content = JSON.parse(JSON.stringify(data)); 
-        
-        // for(var i = 0; i < json_content.length; i++)
-        // {
-            var b = true;
-            var i = 0;
-            var l = json_content.length;
-            alert(l);
-            while(b)
+        setInterval(function(){
+            if(i<json_content.length)
             {
-                alert(i);
-                if(json_content[i].category_id == 1)
-                {
-                    $("#content_container").append("");
-                }
-
-                else if(json_content[i].category_id == 2)
-                {
-                    $("#content_container").append("");
-                }
-
-                else if(json_content[i].category_id == 3)
-                {
-                    //b= false;
-                    alert(i);
-                    $("#content_container").append("<div id='pedagogical_title'>" +
-                                                     json_content[i].title +
-                                                    "</div>" +
-                                                    "<div id='pedagogical_message'>" +
-                                                    json_content[i].description +
-                                                    "</div>");
-                    showPedagogicalMessage();
-                  
-                }
-                else if(json_content[i].category_id == 4)
-                {
-                    $("#content_container").append("");
-                }
-
-                else if(json_content[i].category_id == 5)
-                {
-                    $("#content_container").append("");
-                }
-
-                setTimeout(function()
-                {
-                    if(i<l){
-                        i++;
-                    }
-                        
-                    else{
-                        alert("entrei no else")
-                        i=0;
-                    }
-                        
-                },2000);
-                //i++;
-            
+                i++;
             }
-        // }
+            else
+            {
+                i=0;
+            }
 
+            if(json_content[i].category_id == 1)
+            {
+                $("#content_container").html("");
+            }
+
+            else if(json_content[i].category_id == 2)
+            {
+                $("#content_container").html("");
+            }
+
+            else if(json_content[i].category_id == 3)
+            {
+                alert(json_content[i].description);
+                
+                $("#content_container").html("<div id='pedagogical_title'>" +
+                                                 json_content[i].title +
+                                                "</div>" +
+                                                "<div id='pedagogical_message'>" +
+                                                json_content[i].description +
+                                                "</div>");
+                showPedagogicalMessage();
+              
+            }
+            else if(json_content[i].category_id == 4)
+            {
+                $("#content_container").html("");
+            }
+
+            else if(json_content[i].category_id == 5)
+            {
+                $("#content_container").html("");
+            }
+
+        },4000);
     });
 }
 
 
 function showPedagogicalMessage() {
-    
-   // alert("animaçao")
-    
+        
     $(function () {  
         $('#pedagogical_title').textillate({ 
-            in: { effect: 'fadeInLeftBig', sync: 'true' }, 
+            in: { effect: 'fadeInLeftBig', sync: 'true' }
         });
+        $('#pedagogical_message').textillate({
+            in: { effect: 'fadeInDownBig', sync: 'true' }
+        });  
     });
 
     // $(function () {  
