@@ -31,8 +31,8 @@ $(document).ready(function() {
     }, 2000);
 
     setTimeout(fillFoods, 5000); 
-    getContentsFromServer();
-    selectContent();
+     getContentsFromServer();
+     selectContent();
 });
 
 var feedNumber = 0;
@@ -182,118 +182,116 @@ function selectContent(){
             if(json_content[i].category_id == 1)
             {
                 // Eventos
-                // if(json_content[i].video == null)
-                // {
+                if(!json_content[i].video)
+                {
                     $("#content_container").html("<div id='event_title'>" +
                                                  json_content[i].title +
                                                 "</div>");
-                // }
-                // else
-                // {
-                    // var p = json_content[i].video.split("/");
-                    // var id = p[p.length-1];
-                    // alert(id);
-                    // p = id.split("=");
-                    // id = p[1]; 
-                    // alert(id);
-                    // $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + 
-                    //                                 "http://www.youtube.com/embed/" + id
-                    //                                 +
-                    //                                   " frameborder='0' allowfullscreen></iframe>")
-                // }
+                }
+                else
+                {
+                    var p = json_content[i].video.split("/");
+                    var id = p[p.length-1];
+                    p = id.split("=");
+                    id = p[1]; 
+                    $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + 
+                                                    "http://www.youtube.com/embed/" + id
+                                                    + "?autoplay=1&controls=0&showinfo=0" +
+                                                      " frameborder='0' allowfullscreen></iframe>")
+                }
             }
 
             else if(json_content[i].category_id == 2)
             {
-                // Noticias FCT
-               // if(json_content[i].video == null)
-               //  {
+                //Noticias FCT
+               if(!json_content[i].video)
+                {
                     $("#content_container").html("<div id='pedagogical_title'>" +
                                                  json_content[i].title +
                                                 "</div>");
-                // }
-                // else
-                // {
-                    //  var p = json_content[i].video.split("/");
-                    // var id = p[p.length-1];
-                    // p = id.split("=");
-                    // id = p[1]; 
-                    // $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + p
-                    //                                  + "?autoplay=1&controls=0&showinfo=0" +
-                    //                                   "frameborder='0' allowfullscreen></iframe>")
-                // }
+                }
+                else
+                {
+                     var p = json_content[i].video.split("/");
+                    var id = p[p.length-1];
+                    p = id.split("=");
+                    id = p[1]; 
+                    $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + p
+                                                     + "?autoplay=1&controls=0&showinfo=0" +
+                                                      "frameborder='0' allowfullscreen></iframe>")
+                }
             }
 
             else if(json_content[i].category_id == 3)
             {
                 //Avisos Pedagogicos
-                // if(json_content[i].video == null)
-                // {
+                if(!json_content[i].video)
+                {
                     $("#content_container").html("<div id='pedagogical_title'>" +
                                                  json_content[i].title +
                                                 "</div>" +
                                                 "<div id='pedagogical_message'>" +
                                                 json_content[i].description +
                                                 "</div>");
-                // }
-                // else
-                // {
-                    // var p = json_content[i].video.split("/");
-                    // var id = p[p.length-1];
-                    // p = id.split("=");
-                    // id = p[length-1]; 
-                    // $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + p
-                    //                                  + "?autoplay=1&controls=0&showinfo=0" +
-                    //                                   "frameborder='0' allowfullscreen></iframe>")
-                // }
+                }
+                else
+                {
+                    var p = json_content[i].video.split("/");
+                    var id = p[p.length-1];
+                    p = id.split("=");
+                    id = p[length-1]; 
+                    $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + p
+                                                     + "?autoplay=1&controls=0&showinfo=0" +
+                                                      "frameborder='0' allowfullscreen></iframe>")
+                }
               
             }
             else if(json_content[i].category_id == 4)
             {  
                 //Investigçao e trabalho
-                // if(json_content[i].video == null)
-                // {
+                if(!json_content[i].video)
+                {
                     $("#content_container").html("<div id='work_title'>" +
                                                  json_content[i].title +
                                                 "</div>" +
                                                 "<div id='work_limit_date'>" +
                                                 "Data Limite: " + json_content[i].limit_date +
                                                 "</div>");
-                // }
-                // else
-                // {
-                    // var p = json_content[i].video.split("/");
-                    // var id = p[p.length-1];
-                    // p = id.split("=");
-                    // id = p[length-1]; 
-                    // $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + p
-                    //                                  + "?autoplay=1&controls=0&showinfo=0" +
-                    //                                   "frameborder='0' allowfullscreen></iframe>")
-                // }
+                }
+                else
+                {
+                    var p = json_content[i].video.split("/");
+                    var id = p[p.length-1];
+                    p = id.split("=");
+                    id = p[length-1]; 
+                    $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + p
+                                                     + "?autoplay=1&controls=0&showinfo=0" +
+                                                      "frameborder='0' allowfullscreen></iframe>")
+                }
             }
 
             else if(json_content[i].category_id == 5)
             {
                 //Reportagens
-                // if(json_content[i].video == null)
-                // {
+                if(!json_content[i].video)
+                {
                     $("#content_container").html("<div id='pedagogical_title'>" +
                                                  json_content[i].title +
                                                 "</div>" +
                                                 "<div id='pedagogical_message'>" +
                                                 json_content[i].description +
                                                 "</div>");
-                // }
-                // else
-                // {
-                    //  var p = json_content[i].video.split("/");
-                    // var id = p[p.length-1];
-                    // p = id.split("=");
-                    // id = p[length-1]; 
-                    // $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + p
-                    //                                  + "?autoplay=1&controls=0&showinfo=0" +
-                    //                                   "frameborder='0' allowfullscreen></iframe>")
-                // }
+                }
+                else
+                {
+                     var p = json_content[i].video.split("/");
+                    var id = p[p.length-1];
+                    p = id.split("=");
+                    id = p[length-1]; 
+                    $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + p
+                                                     + "?autoplay=1&controls=0&showinfo=0" +
+                                                      "frameborder='0' allowfullscreen></iframe>")
+                }
             }
 
         },4000);
