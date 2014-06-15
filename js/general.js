@@ -181,66 +181,122 @@ function selectContent(){
 
             if(json_content[i].category_id == 1)
             {
-                $("#content_container").html("");
+                // Eventos
+                // if(json_content[i].video == null)
+                // {
+                    $("#content_container").html("<div id='event_title'>" +
+                                                 json_content[i].title +
+                                                "</div>");
+                // }
+                // else
+                // {
+                    // var p = json_content[i].video.split("/");
+                    // var id = p[p.length-1];
+                    // alert(id);
+                    // p = id.split("=");
+                    // id = p[1]; 
+                    // alert(id);
+                    // $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + 
+                    //                                 "http://www.youtube.com/embed/" + id
+                    //                                 +
+                    //                                   " frameborder='0' allowfullscreen></iframe>")
+                // }
             }
 
             else if(json_content[i].category_id == 2)
             {
-                $("#content_container").html("");
+                // Noticias FCT
+               // if(json_content[i].video == null)
+               //  {
+                    $("#content_container").html("<div id='pedagogical_title'>" +
+                                                 json_content[i].title +
+                                                "</div>");
+                // }
+                // else
+                // {
+                    //  var p = json_content[i].video.split("/");
+                    // var id = p[p.length-1];
+                    // p = id.split("=");
+                    // id = p[1]; 
+                    // $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + p
+                    //                                  + "?autoplay=1&controls=0&showinfo=0" +
+                    //                                   "frameborder='0' allowfullscreen></iframe>")
+                // }
             }
 
             else if(json_content[i].category_id == 3)
             {
-                alert(json_content[i].description);
-                
-                $("#content_container").html("<div id='pedagogical_title'>" +
+                //Avisos Pedagogicos
+                // if(json_content[i].video == null)
+                // {
+                    $("#content_container").html("<div id='pedagogical_title'>" +
                                                  json_content[i].title +
                                                 "</div>" +
                                                 "<div id='pedagogical_message'>" +
                                                 json_content[i].description +
                                                 "</div>");
-                showPedagogicalMessage();
+                // }
+                // else
+                // {
+                    // var p = json_content[i].video.split("/");
+                    // var id = p[p.length-1];
+                    // p = id.split("=");
+                    // id = p[length-1]; 
+                    // $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + p
+                    //                                  + "?autoplay=1&controls=0&showinfo=0" +
+                    //                                   "frameborder='0' allowfullscreen></iframe>")
+                // }
               
             }
             else if(json_content[i].category_id == 4)
-            {
-                $("#content_container").html("");
+            {  
+                //Investigçao e trabalho
+                // if(json_content[i].video == null)
+                // {
+                    $("#content_container").html("<div id='work_title'>" +
+                                                 json_content[i].title +
+                                                "</div>" +
+                                                "<div id='work_limit_date'>" +
+                                                "Data Limite: " + json_content[i].limit_date +
+                                                "</div>");
+                // }
+                // else
+                // {
+                    // var p = json_content[i].video.split("/");
+                    // var id = p[p.length-1];
+                    // p = id.split("=");
+                    // id = p[length-1]; 
+                    // $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + p
+                    //                                  + "?autoplay=1&controls=0&showinfo=0" +
+                    //                                   "frameborder='0' allowfullscreen></iframe>")
+                // }
             }
 
             else if(json_content[i].category_id == 5)
             {
-                $("#content_container").html("");
+                //Reportagens
+                // if(json_content[i].video == null)
+                // {
+                    $("#content_container").html("<div id='pedagogical_title'>" +
+                                                 json_content[i].title +
+                                                "</div>" +
+                                                "<div id='pedagogical_message'>" +
+                                                json_content[i].description +
+                                                "</div>");
+                // }
+                // else
+                // {
+                    //  var p = json_content[i].video.split("/");
+                    // var id = p[p.length-1];
+                    // p = id.split("=");
+                    // id = p[length-1]; 
+                    // $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + p
+                    //                                  + "?autoplay=1&controls=0&showinfo=0" +
+                    //                                   "frameborder='0' allowfullscreen></iframe>")
+                // }
             }
 
         },4000);
     });
 }
-
-
-function showPedagogicalMessage() {
-        
-    $(function () {  
-        $('#pedagogical_title').textillate({ 
-            in: { effect: 'fadeInLeftBig', sync: 'true' }
-        });
-        $('#pedagogical_message').textillate({
-            in: { effect: 'fadeInDownBig', sync: 'true' }
-        });  
-    });
-
-    // $(function () {  
-    //     $('#pedagogical_title').textillate({ 
-    //         in: { effect: 'fadeInLeftBig', sync: 'true' }, 
-    //         out: { effect: 'fadeOutRightBig', sync: 'true' },
-    //         loop: 'true'
-    //     }); 
-
-    //     $('#pedagogical_message').textillate({
-    //         in: { effect: 'fadeInDownBig', sync: 'true' },
-    //         out: { effect: 'fadeOutDownBig', sync: 'true'},
-    //         loop: 'true' 
-    //     });  
-    // }); 
-}
-
 

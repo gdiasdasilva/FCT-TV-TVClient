@@ -35,12 +35,12 @@ body {
 }
 
 #sidebar {
-	width: 400px;
+	width: 350px;
 	position: absolute;
 	top: 270px;
 	right: 0;
 	display: none;
-	font-size: 20px;
+	font-size: 35px;
 }
 
 #pedagogical_title {
@@ -62,7 +62,7 @@ body {
 	position: relative;
 	margin: 0 auto;
 	top: 275px;
-	width: 1400px;
+	width: 1200px;
 	text-align: center;
 	font-size: 60px;
 	color: white;
@@ -71,4 +71,50 @@ body {
     	1px -1px 0 #000,
     	-1px 1px 0 #000,
      	1px 1px 0 #000;
+}
+
+
+#work_title{
+	position: relative;
+	margin: 0 auto;
+	font-size: 60px;
+	text-align: center;
+	top: 225px;
+	width: 1200px;
+	color: white;
+	text-shadow:
+   		-1px -1px 0 #000,  
+    	1px -1px 0 #000,
+    	-1px 1px 0 #000,
+     	1px 1px 0 #000;
+}
+
+#work_limit_date{
+	position: relative;
+	margin: 0 auto;
+	font-size: 60px;
+	text-align: center;
+	top: 275px;
+	width: 1200px;
+	color: white;
+	text-shadow:
+   		-1px -1px 0 #000,  
+    	1px -1px 0 #000,
+    	-1px 1px 0 #000,
+     	1px 1px 0 #000;
+}
+
+#event_title{
+	position: relative;
+	margin: 0 auto;
+	font-size: 100px;
+	text-align: center;
+	width: 1200px;
+	color: white;
+	text-shadow:
+   		-1px -1px 0 #000,  
+    	1px -1px 0 #000,
+    	-1px 1px 0 #000,
+     	1px 1px 0 #000;
+
 }
