@@ -31,8 +31,9 @@ $(document).ready(function() {
     }, 2000);
 
     setTimeout(fillFoods, 5000); 
-     getContentsFromServer();
-     selectContent();
+     // getContentsFromServer();
+     // selectContent();
+     dataContent(-1);
 });
 
 var feedNumber = 0;
@@ -152,34 +153,23 @@ function fillFoods(){
     }, 10000)
 }
 
-function getContentsFromServer() {
-       return $.ajax({
-        url: 'http://localhost:3000/contents.json',
-        type: 'GET',
-        dataType: 'json',
-        beforeSend: function (xhr) {
-                        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
-                    }
-    });
+function dataContent(i){
+    $("#content_container").empty();
+     var size = data.length;
+    if(i<size)
+    {
+        i++;
+    }
+    else
+    {
+        i=0;
+    }
+    publishData(data,5);
 }
 
-function selectContent(){
-     var t = getContentsFromServer();
-     var i = -1;
-    var x = t.success(function(data)
-    {
-        json_content = JSON.parse(JSON.stringify(data)); 
-        setInterval(function(){
-            if(i<json_content.length)
-            {
-                i++;
-            }
-            else
-            {
-                i=0;
-            }
+function publishData(json_content,i){
 
-            if(json_content[i].category_id == 1)
+    if(json_content[i].category_id == 1)
             {
                 // Eventos
                 if(!json_content[i].video)
@@ -187,17 +177,30 @@ function selectContent(){
                     $("#content_container").html("<div id='event_title'>" +
                                                  json_content[i].title +
                                                 "</div>");
+                    setTimeout(function(){dataContent(i)},4000);
                 }
                 else
                 {
+                    alert("entrei");
+
+                   
+
                     var p = json_content[i].video.split("/");
                     var id = p[p.length-1];
                     p = id.split("=");
                     id = p[1]; 
                     $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + 
                                                     "http://www.youtube.com/embed/" + id
-                                                    + "?autoplay=1&controls=0&showinfo=0" +
-                                                      " frameborder='0' allowfullscreen></iframe>")
+                                                    + "?autoplay=1&controls=0&showinfo=0&enablejsapi=1" +
+                                                      " frameborder='0' allowfullscreen></iframe>");
+
+                     var player = new YT.Player(category_id, {
+                        events: {
+                            'onReady': onPlayerReady,
+                            'onStateChange': onPlayerStateChange
+                        }
+                    });
+                    setTimeout(function(){dataContent(i)},4000);
                 }
             }
 
@@ -209,6 +212,7 @@ function selectContent(){
                     $("#content_container").html("<div id='pedagogical_title'>" +
                                                  json_content[i].title +
                                                 "</div>");
+                    setTimeout(function(){dataContent(i)},4000);
                 }
                 else
                 {
@@ -216,9 +220,11 @@ function selectContent(){
                     var id = p[p.length-1];
                     p = id.split("=");
                     id = p[1]; 
-                    $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + p
-                                                     + "?autoplay=1&controls=0&showinfo=0" +
-                                                      "frameborder='0' allowfullscreen></iframe>")
+                    $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + 
+                                                    "http://www.youtube.com/embed/" + id
+                                                    + "?autoplay=1&controls=0&showinfo=0" +
+                                                      " frameborder='0' allowfullscreen></iframe>");
+                    setTimeout(function(){dataContent(i)},4000);
                 }
             }
 
@@ -233,16 +239,21 @@ function selectContent(){
                                                 "<div id='pedagogical_message'>" +
                                                 json_content[i].description +
                                                 "</div>");
+
+                    setTimeout(function(){dataContent(i)},4000);
+
                 }
                 else
                 {
                     var p = json_content[i].video.split("/");
                     var id = p[p.length-1];
                     p = id.split("=");
-                    id = p[length-1]; 
-                    $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + p
-                                                     + "?autoplay=1&controls=0&showinfo=0" +
-                                                      "frameborder='0' allowfullscreen></iframe>")
+                    id = p[1]; 
+                    $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + 
+                                                    "http://www.youtube.com/embed/" + id
+                                                    + "?autoplay=1&controls=0&showinfo=0" +
+                                                      " frameborder='0' allowfullscreen></iframe>");
+                    setTimeout(function(){dataContent(i)},4000);
                 }
               
             }
@@ -257,16 +268,19 @@ function selectContent(){
                                                 "<div id='work_limit_date'>" +
                                                 "Data Limite: " + json_content[i].limit_date +
                                                 "</div>");
+                    setTimeout(function(){dataContent(i)},4000);
                 }
                 else
                 {
                     var p = json_content[i].video.split("/");
                     var id = p[p.length-1];
                     p = id.split("=");
-                    id = p[length-1]; 
-                    $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + p
-                                                     + "?autoplay=1&controls=0&showinfo=0" +
-                                                      "frameborder='0' allowfullscreen></iframe>")
+                    id = p[1]; 
+                    $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + 
+                                                    "http://www.youtube.com/embed/" + id
+                                                    + "?autoplay=1&controls=0&showinfo=0" +
+                                                      " frameborder='0' allowfullscreen></iframe>");
+                    setTimeout(function(){dataContent(i)},4000);
                 }
             }
 
@@ -281,20 +295,19 @@ function selectContent(){
                                                 "<div id='pedagogical_message'>" +
                                                 json_content[i].description +
                                                 "</div>");
+                    setTimeout(function(){dataContent(i)},4000);
                 }
                 else
                 {
                      var p = json_content[i].video.split("/");
                     var id = p[p.length-1];
                     p = id.split("=");
-                    id = p[length-1]; 
-                    $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + p
-                                                     + "?autoplay=1&controls=0&showinfo=0" +
-                                                      "frameborder='0' allowfullscreen></iframe>")
+                    id = p[1]; 
+                    $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + 
+                                                    "http://www.youtube.com/embed/" + id
+                                                    + "?autoplay=1&controls=0&showinfo=0" +
+                                                      " frameborder='0' allowfullscreen></iframe>");
+                    setTimeout(function(){dataContent(i)},4000);
                 }
             }
-
-        },4000);
-    });
 }
-
