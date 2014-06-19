@@ -34,6 +34,7 @@ $(document).ready(function() {
      // getContentsFromServer();
      // selectContent();
      dataContent(-1);
+     
 });
 
 var feedNumber = 0;
@@ -156,7 +157,7 @@ function fillFoods(){
 function dataContent(i){
     $("#content_container").empty();
      var size = data.length;
-    if(i<size)
+    if(i<size-1)
     {
         i++;
     }
@@ -164,7 +165,7 @@ function dataContent(i){
     {
         i=0;
     }
-    publishData(data,5);
+    publishData(data,i);
 }
 
 function publishData(json_content,i){
@@ -181,26 +182,19 @@ function publishData(json_content,i){
                 }
                 else
                 {
-                    alert("entrei");
+                    var divide = json_content[i].video.split(".");
+                    var extension = divide[divide.length-1];
+                   $("#content_container").html("<video width='1920'controls autoplay id='myvideo'>" + 
+                                                    "<source src='bin/videos_client/" + json_content[i].video +"' type='video/" + extension + "'>" +
+                                                "</video>");
 
-                   
+                   var video = document.getElementById("myvideo");   
 
-                    var p = json_content[i].video.split("/");
-                    var id = p[p.length-1];
-                    p = id.split("=");
-                    id = p[1]; 
-                    $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + 
-                                                    "http://www.youtube.com/embed/" + id
-                                                    + "?autoplay=1&controls=0&showinfo=0&enablejsapi=1" +
-                                                      " frameborder='0' allowfullscreen></iframe>");
+                    video.onended = function(e) {
 
-                     var player = new YT.Player(category_id, {
-                        events: {
-                            'onReady': onPlayerReady,
-                            'onStateChange': onPlayerStateChange
-                        }
-                    });
-                    setTimeout(function(){dataContent(i)},4000);
+                        dataContent(i);
+                        // code to navigate page
+                        } 
                 }
             }
 
@@ -216,15 +210,19 @@ function publishData(json_content,i){
                 }
                 else
                 {
-                     var p = json_content[i].video.split("/");
-                    var id = p[p.length-1];
-                    p = id.split("=");
-                    id = p[1]; 
-                    $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + 
-                                                    "http://www.youtube.com/embed/" + id
-                                                    + "?autoplay=1&controls=0&showinfo=0" +
-                                                      " frameborder='0' allowfullscreen></iframe>");
-                    setTimeout(function(){dataContent(i)},4000);
+                     var divide = json_content[i].video.split(".");
+                    var extension = divide[divide.length-1];
+                   $("#content_container").html("<video width='1920'controls autoplay id='myvideo'>" + 
+                                                    "<source src='bin/videos_client/" + json_content[i].video +"' type='video/" + extension + "'>" +
+                                                "</video>");
+
+                   var video = document.getElementById("myvideo");   
+
+                    video.onended = function(e) {
+
+                        dataContent(i);
+                        // code to navigate page
+                        } 
                 }
             }
 
@@ -245,15 +243,19 @@ function publishData(json_content,i){
                 }
                 else
                 {
-                    var p = json_content[i].video.split("/");
-                    var id = p[p.length-1];
-                    p = id.split("=");
-                    id = p[1]; 
-                    $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + 
-                                                    "http://www.youtube.com/embed/" + id
-                                                    + "?autoplay=1&controls=0&showinfo=0" +
-                                                      " frameborder='0' allowfullscreen></iframe>");
-                    setTimeout(function(){dataContent(i)},4000);
+                    var divide = json_content[i].video.split(".");
+                    var extension = divide[divide.length-1];
+                   $("#content_container").html("<video width='1920'controls autoplay id='myvideo'>" + 
+                                                    "<source src='bin/videos_client/" + json_content[i].video +"' type='video/" + extension + "'>" +
+                                                "</video>");
+
+                   var video = document.getElementById("myvideo");   
+
+                    video.onended = function(e) {
+
+                        dataContent(i);
+                        // code to navigate page
+                        } 
                 }
               
             }
@@ -272,15 +274,19 @@ function publishData(json_content,i){
                 }
                 else
                 {
-                    var p = json_content[i].video.split("/");
-                    var id = p[p.length-1];
-                    p = id.split("=");
-                    id = p[1]; 
-                    $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + 
-                                                    "http://www.youtube.com/embed/" + id
-                                                    + "?autoplay=1&controls=0&showinfo=0" +
-                                                      " frameborder='0' allowfullscreen></iframe>");
-                    setTimeout(function(){dataContent(i)},4000);
+                    var divide = json_content[i].video.split(".");
+                    var extension = divide[divide.length-1];
+                   $("#content_container").html("<video width='1920'controls autoplay id='myvideo'>" + 
+                                                    "<source src='bin/videos_client/" + json_content[i].video +"' type='video/" + extension + "'>" +
+                                                "</video>");
+
+                   var video = document.getElementById("myvideo");   
+
+                    video.onended = function(e) {
+
+                        dataContent(i);
+                        // code to navigate page
+                        } 
                 }
             }
 
@@ -299,15 +305,20 @@ function publishData(json_content,i){
                 }
                 else
                 {
-                     var p = json_content[i].video.split("/");
-                    var id = p[p.length-1];
-                    p = id.split("=");
-                    id = p[1]; 
-                    $("#outside_container").html("<iframe id='video' width='1920' height='1080' src=" + 
-                                                    "http://www.youtube.com/embed/" + id
-                                                    + "?autoplay=1&controls=0&showinfo=0" +
-                                                      " frameborder='0' allowfullscreen></iframe>");
-                    setTimeout(function(){dataContent(i)},4000);
+                     var divide = json_content[i].video.split(".");
+                    var extension = divide[divide.length-1];
+                   $("#content_container").html("<video width='1920'controls autoplay id='myvideo'>" + 
+                                                    "<source src='bin/videos_client/" + json_content[i].video +"' type='video/" + extension + "'>" +
+                                                "</video>");
+
+                   var video = document.getElementById("myvideo");   
+
+                    video.onended = function(e) {
+
+                        dataContent(i);
+                        // code to navigate page
+                        } 
                 }
             }
 }
+
