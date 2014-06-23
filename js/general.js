@@ -160,7 +160,6 @@ function fillFoods(){
 }
 
 function dataContent(n){
-    // $("#content_container").empty();
      var size = data.length;
     if(i<size-1)
     {
@@ -173,9 +172,6 @@ function dataContent(n){
     publishData(data,i);
 }
 
-function callback(){
-    alert();
-}
 
 function publishData(json_content,i){
 
@@ -184,6 +180,7 @@ function publishData(json_content,i){
                 // Eventos
                 if(!json_content[i].video)
                 {
+                    console.log(i);
                     // $("#content_container").html("<div id='event_title'>" +
                     //                              json_content[i].title +
                     //                             "</div>");
@@ -191,50 +188,36 @@ function publishData(json_content,i){
                     // setTimeout(function(){dataContent(i)},4000);
                   //Animacao prezi
                   
-                    
+                    $("#content_container").html("<div id='impress'>" + 
+                            "<div id='title' class='step' data-x='0' data-y='0' data-scale='4' data-duration='2000'>" + 
+                            "</div>" + 
+                            "<div id='its' class='step' data-x='850' data-y='3000' data-rotate='90' data-scale='5' data-duration='2000'>" + 
+                            "</div>" + 
+                             "<div id='big' class='step' data-x='3500' data-y='2100' data-rotate='180' data-scale='6' data-duration='2000'>" +
+                            "</div>" +
+                            "<div id='ing' class='step' data-x='3500' data-y='-850' data-rotate='270' data-scale='6' data-duration='2000'>" +
+                            "</div>" +
+                            "<div id='imagination' class='step' data-x='6700' data-y='-300' data-scale='6' data-duration='2000'>" + 
+                            "</div>" +
+                             "<div id='overview' class='step' data-x='3000' data-y='1500' data-scale='10' data-duration='2000'>" +
+                             "</div>" +
+                                "</div>");
+
                     $("#title").html("<h1>EVENTOS</h1>");
                     $("#its").html(json_content[i].title);
                     $("#big").html(json_content[i].description);
                     $("#ing").html(json_content[i].event_site);
                     $("#imagination").html(json_content[i].event_datetime);
-                    // $("#impress").css("visibility","visible");
 
-                    // $("#impress").jmpress();
-
-                    $( '#impress' ).jmpress();
-                    // $('#overview').on(function(){alert("callback");}, function(enterStep,e){});
+            
+                    $( '#impress' ).jmpress({hash: { use: false }});
 
 
-                        // $('#overview').on('enterStep', function(event) {
-                        //         // jQuery event triggered when entering a specific step
-                        //         console.log('Hello step #home!');
-                        //         dataContent(i);
-                        //     });
 
-                    
-
-                    $('#overview').on('leaveStep', function(event) {
-                    $("#impress").hide();
-                });
-
-                     setTimeout(function(){dataContent(i)},14000);
-                    //   $("#overview").on('enterStep', function(){
-                    // alert("entrei");
-                    // dataContent(i);
-                    // });
-
-                // var script1 = document.createElement("script");
-                // script1.setAttribute("id", "impress_js");
-                // script1.setAttribute("type", "text/javascript");
-                // script1.setAttribute("src", "js/impress.js");
-                // document.body.appendChild(script1);
-
-                // var script2 = document.createElement("script");
-                // script2.setAttribute("id", "impress_calling");
-                // script2.setAttribute("type", "text/javascript");
-                // script2.setAttribute("src", "js/impress_1.js");
-                // document.body.appendChild(script2);
-
+                     
+                    setTimeout(function(){$( '#impress' ).jmpress('deinit');
+                                            dataContent(i);
+                                        },12000);    
 
             
                    
@@ -265,7 +248,8 @@ function publishData(json_content,i){
                     $("#content_container").html("<div id='pedagogical_title'>" +
                                                  json_content[i].title +
                                                 "</div>");
-                    setTimeout(function(){dataContent(i)},4000);
+                    setTimeout(function(){
+                        dataContent(i)},4000);
                 }
                 else
                 {
