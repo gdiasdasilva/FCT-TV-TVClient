@@ -3,9 +3,49 @@
  
     font-size: 48px;
     color: white;
+    min-height: 540px;
+}
+
+.step {
+    position: relative;
+    width: 900px;
+    padding: 40px;
+    margin: 80px auto;  
+
 }
 
 
+#type {
+    padding: 0;
+}
+
+#type h1 {
+    font-size: 190px;
+
+    -webkit-transform: translateZ(50px);
+    -moz-transform:    translateZ(50px);
+    -ms-transform:     translateZ(50px);
+    -o-transform:      translateZ(50px);
+    transform:         translateZ(50px);
+}
+
+#title {
+    /*width: 600px;*/
+    font-size: 60px;
+    
+}
+
+#description{
+
+}
+
+#place{
+
+}
+
+#time{
+
+}
 
 
 

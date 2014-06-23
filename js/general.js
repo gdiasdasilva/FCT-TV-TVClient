@@ -26,9 +26,9 @@ $(document).ready(function() {
 
     getFeeds();
 
-    setTimeout(function(){
-        $("#sidebar").fadeIn(3000);
-    }, 2000);
+    // setTimeout(function(){
+    //     $("#sidebar").fadeIn(3000);
+    // }, 2000);
 
     setTimeout(fillFoods, 5000); 
     
@@ -180,7 +180,6 @@ function publishData(json_content,i){
                 // Eventos
                 if(!json_content[i].video)
                 {
-                    console.log(i);
                     // $("#content_container").html("<div id='event_title'>" +
                     //                              json_content[i].title +
                     //                             "</div>");
@@ -189,38 +188,38 @@ function publishData(json_content,i){
                   //Animacao prezi
                   
                     $("#content_container").html("<div id='impress'>" + 
-                            "<div id='title' class='step' data-x='0' data-y='0' data-scale='4' data-duration='2000'>" + 
+                            "<div id='type' class='step' data-x='0' data-y='0' data-scale='4' data-duration='2000'>" + 
                             "</div>" + 
-                            "<div id='its' class='step' data-x='850' data-y='3000' data-rotate='90' data-scale='5' data-duration='2000'>" + 
+                            "<div id='title' class='step' data-x='150' data-y='4000' data-rotate='90' data-scale='5' data-duration='2000'>" + 
                             "</div>" + 
-                             "<div id='big' class='step' data-x='3500' data-y='2100' data-rotate='180' data-scale='6' data-duration='2000'>" +
+                             "<div id='description' class='step' data-x='4500' data-y='4100' data-rotate='180' data-scale='6' data-duration='2000'>" +
                             "</div>" +
-                            "<div id='ing' class='step' data-x='3500' data-y='-850' data-rotate='270' data-scale='6' data-duration='2000'>" +
+                            "<div id='place' class='step' data-x='4500' data-y='-250' data-rotate='270' data-scale='6' data-duration='2000'>" +
                             "</div>" +
-                            "<div id='imagination' class='step' data-x='6700' data-y='-300' data-scale='6' data-duration='2000'>" + 
+                            "<div id='hour' class='step' data-x='7700' data-y='-800' data-scale='6' data-duration='2000'>" + 
                             "</div>" +
                              "<div id='overview' class='step' data-x='3000' data-y='1500' data-scale='10' data-duration='2000'>" +
                              "</div>" +
                                 "</div>");
 
-                    $("#title").html("<h1>EVENTOS</h1>");
-                    $("#its").html(json_content[i].title);
-                    $("#big").html(json_content[i].description);
-                    $("#ing").html(json_content[i].event_site);
-                    $("#imagination").html(json_content[i].event_datetime);
+                    $("#type").html("<h1>EVENTOS</h1>");
+                    $("#title").html(json_content[i].title);
+                    $("#description").html(json_content[i].description);
+                    $("#place").html(json_content[i].event_site);
+
+                    var tmp = json_content[i].event_datetime;
+                    var s = tmp.split("T");
+                    var h = s[1].split(".");
+                    var code = "<p>" + s[0] + "</p><p>" + h[0] +"</p>"
+                    $("#hour").html(code);
 
             
                     $( '#impress' ).jmpress({hash: { use: false }});
-
-
-
                      
-                    setTimeout(function(){$( '#impress' ).jmpress('deinit');
-                                            dataContent(i);
-                                        },12000);    
+                    // setTimeout(function(){$( '#impress' ).jmpress('deinit');
+                    //                         dataContent(i);
+                    //                     },12000);    
 
-            
-                   
                 }
                 else
                 {
