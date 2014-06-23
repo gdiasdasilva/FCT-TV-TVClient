@@ -31,10 +31,12 @@ $(document).ready(function() {
     }, 2000);
 
     setTimeout(fillFoods, 5000); 
+    
      // getContentsFromServer();
      // selectContent();
-     dataContent(-1);
-     
+    dataContent(-1);
+
+  
 });
 
 var feedNumber = 0;
@@ -42,6 +44,9 @@ var feedURL = "";
 
 var foodTimes = 0;
 var json_content;
+var i;
+
+
 
 function getFeeds()
 {
@@ -154,18 +159,22 @@ function fillFoods(){
     }, 10000)
 }
 
-function dataContent(i){
-    $("#content_container").empty();
+function dataContent(n){
+    // $("#content_container").empty();
      var size = data.length;
     if(i<size-1)
     {
-        i++;
+        i= n+1;
     }
     else
     {
         i=0;
     }
     publishData(data,i);
+}
+
+function callback(){
+    alert();
 }
 
 function publishData(json_content,i){
@@ -175,10 +184,60 @@ function publishData(json_content,i){
                 // Eventos
                 if(!json_content[i].video)
                 {
-                    $("#content_container").html("<div id='event_title'>" +
-                                                 json_content[i].title +
-                                                "</div>");
-                    setTimeout(function(){dataContent(i)},4000);
+                    // $("#content_container").html("<div id='event_title'>" +
+                    //                              json_content[i].title +
+                    //                             "</div>");
+
+                    // setTimeout(function(){dataContent(i)},4000);
+                  //Animacao prezi
+                  
+                    
+                    $("#title").html("<h1>EVENTOS</h1>");
+                    $("#its").html(json_content[i].title);
+                    $("#big").html(json_content[i].description);
+                    $("#ing").html(json_content[i].event_site);
+                    $("#imagination").html(json_content[i].event_datetime);
+                    // $("#impress").css("visibility","visible");
+
+                    // $("#impress").jmpress();
+
+                    $( '#impress' ).jmpress();
+                    // $('#overview').on(function(){alert("callback");}, function(enterStep,e){});
+
+
+                        // $('#overview').on('enterStep', function(event) {
+                        //         // jQuery event triggered when entering a specific step
+                        //         console.log('Hello step #home!');
+                        //         dataContent(i);
+                        //     });
+
+                    
+
+                    $('#overview').on('leaveStep', function(event) {
+                    $("#impress").hide();
+                });
+
+                     setTimeout(function(){dataContent(i)},14000);
+                    //   $("#overview").on('enterStep', function(){
+                    // alert("entrei");
+                    // dataContent(i);
+                    // });
+
+                // var script1 = document.createElement("script");
+                // script1.setAttribute("id", "impress_js");
+                // script1.setAttribute("type", "text/javascript");
+                // script1.setAttribute("src", "js/impress.js");
+                // document.body.appendChild(script1);
+
+                // var script2 = document.createElement("script");
+                // script2.setAttribute("id", "impress_calling");
+                // script2.setAttribute("type", "text/javascript");
+                // script2.setAttribute("src", "js/impress_1.js");
+                // document.body.appendChild(script2);
+
+
+            
+                   
                 }
                 else
                 {
@@ -231,11 +290,16 @@ function publishData(json_content,i){
                 //Avisos Pedagogicos
                 if(!json_content[i].video)
                 {
+                    var description = json_content[i].description;
+
+                    var shortText = jQuery.trim(description).substring(0, 180)
+                        .split(" ").slice(0, -1).join(" ") + "...";
+
                     $("#content_container").html("<div id='pedagogical_title'>" +
                                                  json_content[i].title +
                                                 "</div>" +
                                                 "<div id='pedagogical_message'>" +
-                                                json_content[i].description +
+                                                shortText +
                                                 "</div>");
 
                     setTimeout(function(){dataContent(i)},4000);

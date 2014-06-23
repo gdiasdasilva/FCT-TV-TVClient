@@ -2,6 +2,9 @@ body {
 	margin: 0;
 }
 
+.hidden{
+	visibility: hidden;
+}
 #outside_container {
 	margin: 0 auto;
 	width: 1920px;
@@ -34,7 +37,7 @@ body {
 }
 
 #sidebar {
-	width: 350px;
+	width: 700px;
 	position: absolute;
 	top: 270px;
 	right: 0;
