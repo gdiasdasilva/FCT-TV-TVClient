@@ -46,8 +46,6 @@ var foodTimes = 0;
 var json_content;
 var i;
 
-
-
 function getFeeds()
 {
     jQuery.browser = {};
@@ -173,8 +171,8 @@ function dataContent(n){
 }
 
 
-function publishData(json_content,i){
-
+function publishData(json_content,i)
+{
     if(json_content[i].category_id == 1)
             {
                 // Eventos
@@ -188,33 +186,48 @@ function publishData(json_content,i){
                   //Animacao prezi
                   
                     $("#content_container").html("<div id='impress'>" + 
-                            "<div id='type' class='step' data-x='0' data-y='0' data-scale='4' data-duration='2000'>" + 
-                            "</div>" + 
-                            "<div id='title' class='step' data-x='150' data-y='4000' data-rotate='90' data-scale='5' data-duration='2000'>" + 
-                            "</div>" + 
-                             "<div id='description' class='step' data-x='4500' data-y='4100' data-rotate='180' data-scale='6' data-duration='2000'>" +
+                            "<div id='title' class='step' data-x='150' data-y='6000' data-scale='7' data-duration='2000'>" + 
                             "</div>" +
-                            "<div id='place' class='step' data-x='4500' data-y='-250' data-rotate='270' data-scale='6' data-duration='2000'>" +
+                            "<div id='place' class='step' data-x='500' data-y='2000' data-rotate='150' data-scale='7' data-duration='2000'>" +
                             "</div>" +
-                            "<div id='hour' class='step' data-x='7700' data-y='-800' data-scale='6' data-duration='2000'>" + 
+                            "<div id='hour' class='step' data-x='5000' data-y='4000' data-rotate='300' data-scale='7' data-duration='2000'>" + 
+                            "</div>" +                            
+                            "<div id='final_title' class='step' data-x='150' data-y='6000' data-scale='7' data-rotate='100' data-duration='2000'>" + 
                             "</div>" +
-                             "<div id='overview' class='step' data-x='3000' data-y='1500' data-scale='10' data-duration='2000'>" +
-                             "</div>" +
-                                "</div>");
+                        "</div>"
+                    );
 
-                    $("#type").html("<h1>EVENTOS</h1>");
+                    // $("#content_container").html("<div id='impress'>" + 
+                    //     "<div id='title' class='step' data-x='500' data-y='1500' data-rotate='0' data-scale='7' data-duration='1000'>" + 
+                    //     "</div>" +
+                    //     "<div id='place' class='step' data-x='500' data-y='3000' data-rotate='270' data-scale='7' data-duration='1000'>" +
+                    //     "</div>" +
+                    //     "<div id='hour' class='step' data-x='500' data-y='4500' data-rotate='90' data-scale='7' data-duration='1000'>" + 
+                    //     "</div>" +
+                    //     "<div id='overview' class='step' data-x='500' data-y='1500' data-scale='7' data-duration='3000'>" +
+                    //     "</div>" +
+                    //     "</div>"
+                    // );
+
                     $("#title").html(json_content[i].title);
+                    $("#final_title").html(json_content[i].title);
                     $("#description").html(json_content[i].description);
                     $("#place").html(json_content[i].event_site);
 
                     var tmp = json_content[i].event_datetime;
                     var s = tmp.split("T");
                     var h = s[1].split(".");
-                    var code = "<p>" + s[0] + "</p><p>" + h[0] +"</p>"
+                    var time = h[0].split(":");
+                    var code = "<p>" + s[0] + "</p><p>" + time[0] + "h" + time[1] + "</p>";
                     $("#hour").html(code);
 
             
-                    $( '#impress' ).jmpress({hash: { use: false }});
+                    $('#impress').jmpress({hash: { use: false }});
+
+                    setTimeout(function(){
+                        $('#impress').fadeOut(1000);
+                    }, 10000);
+
                      
                     // setTimeout(function(){$( '#impress' ).jmpress('deinit');
                     //                         dataContent(i);

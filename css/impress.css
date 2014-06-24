@@ -1,52 +1,47 @@
-
-#impress{
- 
+#impress
+{ 
     font-size: 48px;
     color: white;
     min-height: 540px;
+    margin-top: 250px
 }
 
 .step {
     position: relative;
     width: 900px;
     padding: 40px;
-    margin: 80px auto;  
-
+    margin: auto;
+    opacity: 0.05; 
 }
 
-
-#type {
-    padding: 0;
+#overview {
+    opacity: 0;
 }
 
-#type h1 {
-    font-size: 190px;
-
-    -webkit-transform: translateZ(50px);
-    -moz-transform:    translateZ(50px);
-    -ms-transform:     translateZ(50px);
-    -o-transform:      translateZ(50px);
-    transform:         translateZ(50px);
+.active {
+    opacity: 1.0;
 }
 
-#title {
-    /*width: 600px;*/
-    font-size: 60px;
-    
+#title, #final_title {
+    width: 1400px;
+    font-size: 70px;
+    text-align: center;  
 }
 
 #description{
 
 }
 
-#place{
-
+#place
+{
+    width: 1400px;
+    font-size: 80px;
+    text-align: center;
 }
 
-#time{
-
+#hour
+{
+    width: 1400px;
+    font-size: 80px;
+    text-align: center;
 }
-
-
-
-
