@@ -179,41 +179,42 @@ function publishData(json_content,i)
                 if(!json_content[i].video)
                 {                  
                     $("#content_container").html("<div id='impress'>" + 
-                            "<div id='title' class='step' data-x='150' data-y='6000' data-scale='7' data-duration='2000'>" + 
+                            "<div id='title' class='step' data-x='150' data-y='6000' data-scale='7' data-duration='5000'>" + 
                             "</div>" +
-                            "<div id='place' class='step' data-x='500' data-y='2000' data-rotate='-150' data-scale='7' data-duration='2000'>" +
+                            "<div id='place' class='step' data-x='500' data-y='2000' data-rotate='-150' data-scale='7' data-duration='5000'>" +
                             "</div>" +
-                            "<div id='hour' class='step' data-x='5000' data-y='4000' data-rotate='300' data-scale='7' data-duration='2000'>" + 
+                            "<div id='hour' class='step' data-x='5000' data-y='4000' data-rotate='300' data-scale='7' data-duration='5000'>" + 
                             "</div>" +                            
-                            "<div id='final_title' class='step' data-x='150' data-y='6000' data-scale='7' data-rotate='-40' data-duration='2000'>" + 
+                            "<div id='final_title' class='step' data-x='150' data-y='6000' data-scale='7' data-rotate='-40' data-duration='5000'>" + 
                             "</div>" +
                         "</div>"
                     );
 
                     $("#title").html(json_content[i].title);
                     $("#final_title").html(json_content[i].title);
-                    $("#description").html(json_content[i].description);
-                    $("#place").html(json_content[i].event_site);
+                    $("#place").html("<img src='img/map_icon.png' width='200px'>" + "<br>" + json_content[i].event_site);
 
                     var tmp = json_content[i].event_datetime;
                     var s = tmp.split("T");
                     var h = s[1].split(".");
                     var time = h[0].split(":");
-                    var code = "<p>" + s[0] + "</p><p>" + time[0] + "h" + time[1] + "</p>";
+                    var code = "<img src='img/time-13-512.png' width='150px'>" + "<br>" + "<p>" + s[0] + "</p><p>" + time[0] + "h" + time[1] + "</p>";
                     $("#hour").html(code);
+
+
 
             
                     $('#impress').jmpress({hash: { use: false }});
 
-                    setTimeout(function(){
-                        $('#impress').fadeOut(1000);
-                        $("#content_container").html("");
-                    }, 10000);
+                    // setTimeout(function(){
+                    //     $('#impress').fadeOut(1000);
+                    //     $("#content_container").html("");
+                    // }, 20000);
 
                      
                     setTimeout(function(){$( '#impress' ).jmpress('deinit');
                                              dataContent(i);
-                                         },12000);    
+                                         },20000);    
 
                 }
                 else
