@@ -11,7 +11,7 @@
     width: 900px;
     padding: 40px;
     margin: auto;
-    opacity: 0; 
+    opacity: 0.1; 
 }
 
 #overview {
@@ -22,14 +22,10 @@
     opacity: 1.0;
 }
 
-#title, #final_title {
+#title {
     width: 1400px;
     font-size: 70px;
     text-align: center;  
-}
-
-#description{
-
 }
 
 #place
@@ -44,4 +40,27 @@
     width: 1400px;
     font-size: 80px;
     text-align: center;
+}
+
+#hour b {
+    display: inline-block;
+    -webkit-transition: 0.5s;
+    -moz-transition:    0.5s;
+    -ms-transition:     0.5s;
+    -o-transition:      0.5s;
+    transition:         0.5s;
+}
+
+#hour.active .scaling {
+    -webkit-transform: scale(1.7);
+    -moz-transform:    scale(1.7);
+    -ms-transform:     scale(1.7);
+    -o-transform:      scale(1.7);
+    transform:         scale(1.7);
+
+    -webkit-transition-delay: 0.5s;
+    -moz-transition-delay:    0.5s;
+    -ms-transition-delay:     0.5s;
+    -o-transition-delay:      0.5s;
+    transition-delay:         2.5s;
 }

@@ -25,15 +25,13 @@ body {
 }
 
 #logo {
-	height: 150px;
-	width: 150px;
 	position: absolute;
 	left: 25px;
 	top: 25px;
 }
 
 #logo img {
-	width: 200px;
+	width: 300px;
 }
 
 #time {
@@ -44,6 +42,20 @@ body {
 	font-size: 75px;
    	color: white;
  	text-shadow:
+   		-1px -1px 0 #000,  
+    	1px -1px 0 #000,
+    	-1px 1px 0 #000,
+     	1px 1px 0 #000; 
+}
+
+#content_type_container
+{
+	position: absolute;
+	left: 25px;
+	top: 170px;
+	font-size: 40px;
+	color: white;
+	text-shadow:
    		-1px -1px 0 #000,  
     	1px -1px 0 #000,
     	-1px 1px 0 #000,
@@ -132,5 +144,19 @@ body {
     	1px -1px 0 #000,
     	-1px 1px 0 #000,
      	1px 1px 0 #000;
+}
 
+#news_title{
+	position: relative;
+	margin: 0 auto;
+	top: 225px;
+	width: 1200px;
+	text-align: center;
+	font-size: 100px;
+	color: white;
+	text-shadow:
+   		-1px -1px 0 #000,  
+    	1px -1px 0 #000,
+    	-1px 1px 0 #000,
+     	1px 1px 0 #000;
 }

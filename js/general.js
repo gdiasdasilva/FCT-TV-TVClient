@@ -34,9 +34,9 @@ $(document).ready(function() {
     
      // getContentsFromServer();
      // selectContent();
+    shuffle(data);
     dataContent(-1);
 
-  
 });
 
 var feedNumber = 0;
@@ -175,43 +175,40 @@ function publishData(json_content,i)
 {
     if(json_content[i].category_id == 1)
             {
+                $("#content_type_container").html("Eventos");
+
                 // Eventos
                 if(!json_content[i].video)
                 {                  
                     $("#content_container").html("<div id='impress'>" + 
-                            "<div id='title' class='step' data-x='150' data-y='6000' data-scale='7' data-duration='5000'>" + 
+                            "<div id='title' class='step' data-x='150' data-y='6000' data-scale='7' data-rotate='90' data-duration='5000'>" + 
                             "</div>" +
-                            "<div id='place' class='step' data-x='500' data-y='2000' data-rotate='-150' data-scale='7' data-duration='5000'>" +
+                            "<div id='place' class='step' data-x='500' data-y='2000' data-z='-3000' data-rotate='-150' data-scale='1' data-duration='5000'>" +
                             "</div>" +
                             "<div id='hour' class='step' data-x='5000' data-y='4000' data-rotate='300' data-scale='7' data-duration='5000'>" + 
                             "</div>" +                            
-                            "<div id='final_title' class='step' data-x='150' data-y='6000' data-scale='7' data-rotate='-40' data-duration='5000'>" + 
-                            "</div>" +
                         "</div>"
                     );
 
                     $("#title").html(json_content[i].title);
                     $("#final_title").html(json_content[i].title);
-                    $("#place").html("<img src='img/map_icon3.png' width='100px'>" + "<br>" + json_content[i].event_site);
+                    $("#place").html("<img src='img/map_icon3 copy.png' width='100px'>" + "<br>" + json_content[i].event_site);
 
                     var tmp = json_content[i].event_datetime;
                     var s = tmp.split("T");
                     var h = s[1].split(".");
                     var time = h[0].split(":");
-                    var code = "<br><img src='img/time-8-512.png' width='150px'>" + "<br>" + "<p>" + s[0] + "</p><p>" + time[0] + "h" + time[1] + "</p>";
+                    var code = "<br><img src='img/time-8-512 copy.png' width='150px'>" + "<br>" + "<p>" + "<b class='scaling'>" + s[0] + "</b>" + "</p><p>" + time[0] + "h" + time[1] + "</p>";
                     $("#hour").append(code);
 
                     $('#impress').jmpress({hash: { use: false }});
 
-                    // setTimeout(function(){
-                    //     $('#impress').fadeOut(1000);
-                    //     $("#content_container").html("");
-                    // }, 20000);
+                    
 
                      
                     setTimeout(function(){$( '#impress' ).jmpress('deinit');
                                              dataContent(i);
-                                         },20000);    
+                                         },17000);    
 
                 }
                 else
@@ -226,7 +223,7 @@ function publishData(json_content,i)
 
                     video.onended = function(e) {
 
-                        dataContent(i);
+                         dataContent(i);
                         // code to navigate page
                         } 
                 }
@@ -234,14 +231,26 @@ function publishData(json_content,i)
 
             else if(json_content[i].category_id == 2)
             {
+                $("#content_type_container").html("Notícias");
+
                 //Noticias FCT
                if(!json_content[i].video)
                 {
-                    $("#content_container").html("<div id='pedagogical_title'>" +
-                                                 json_content[i].title +
-                                                "</div>");
-                    setTimeout(function(){
-                        dataContent(i)},4000);
+                    $("#content_container").html("<div id='news_title'>" + json_content[i].title + "</div>");
+                    
+ 
+                    $('#news_title').textillate({  
+                        in:
+                        {
+                            effect: 'fadeInLeftBig',
+                        }  
+                    }); 
+
+                    setTimeout(function()
+                    {
+                        $("#news_title").fadeOut(1000);
+                        dataContent(i);
+                    }, 7500);  
                 }
                 else
                 {
@@ -360,5 +369,16 @@ function publishData(json_content,i)
                         } 
                 }
             }
+}
+
+function shuffle(sourceArray)
+{
+    for (var n = 0; n < sourceArray.length - 1; n++) {
+        var k = n + Math.floor(Math.random() * (sourceArray.length - n));
+
+        var temp = sourceArray[k];
+        sourceArray[k] = sourceArray[n];
+        sourceArray[n] = temp;
+    }
 }
 
