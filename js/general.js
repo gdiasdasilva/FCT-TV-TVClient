@@ -192,18 +192,15 @@ function publishData(json_content,i)
 
                     $("#title").html(json_content[i].title);
                     $("#final_title").html(json_content[i].title);
-                    $("#place").html("<img src='img/map_icon.png' width='200px'>" + "<br>" + json_content[i].event_site);
+                    $("#place").html("<img src='img/map_icon3.png' width='100px'>" + "<br>" + json_content[i].event_site);
 
                     var tmp = json_content[i].event_datetime;
                     var s = tmp.split("T");
                     var h = s[1].split(".");
                     var time = h[0].split(":");
-                    var code = "<img src='img/time-13-512.png' width='150px'>" + "<br>" + "<p>" + s[0] + "</p><p>" + time[0] + "h" + time[1] + "</p>";
-                    $("#hour").html(code);
+                    var code = "<br><img src='img/time-8-512.png' width='150px'>" + "<br>" + "<p>" + s[0] + "</p><p>" + time[0] + "h" + time[1] + "</p>";
+                    $("#hour").append(code);
 
-
-
-            
                     $('#impress').jmpress({hash: { use: false }});
 
                     // setTimeout(function(){
