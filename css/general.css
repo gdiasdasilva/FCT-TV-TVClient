@@ -31,6 +31,10 @@ body {
 	top: 25px;
 }
 
+#logo img {
+	width: 200px;
+}
+
 #time {
 	position: absolute;
 	height: 115px;

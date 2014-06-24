@@ -40,6 +40,7 @@ $(document).ready(function() {
 });
 
 var feedNumber = 0;
+var animationNumber = 0;
 var feedURL = "";
 
 var foodTimes = 0;
@@ -119,8 +120,7 @@ function getFeeds()
                 setTimeout(getFeeds, 60000);
             }
         });   
-    }
-    
+    }   
 }
 
 function checkTime(i) {
@@ -158,7 +158,7 @@ function fillFoods(){
 }
 
 function dataContent(n){
-     var size = data.length;
+     var size = 4;
     if(i<size-1)
     {
         i= n+1;
@@ -177,37 +177,18 @@ function publishData(json_content,i)
             {
                 // Eventos
                 if(!json_content[i].video)
-                {
-                    // $("#content_container").html("<div id='event_title'>" +
-                    //                              json_content[i].title +
-                    //                             "</div>");
-
-                    // setTimeout(function(){dataContent(i)},4000);
-                  //Animacao prezi
-                  
+                {                  
                     $("#content_container").html("<div id='impress'>" + 
                             "<div id='title' class='step' data-x='150' data-y='6000' data-scale='7' data-duration='2000'>" + 
                             "</div>" +
-                            "<div id='place' class='step' data-x='500' data-y='2000' data-rotate='150' data-scale='7' data-duration='2000'>" +
+                            "<div id='place' class='step' data-x='500' data-y='2000' data-rotate='-150' data-scale='7' data-duration='2000'>" +
                             "</div>" +
                             "<div id='hour' class='step' data-x='5000' data-y='4000' data-rotate='300' data-scale='7' data-duration='2000'>" + 
                             "</div>" +                            
-                            "<div id='final_title' class='step' data-x='150' data-y='6000' data-scale='7' data-rotate='100' data-duration='2000'>" + 
+                            "<div id='final_title' class='step' data-x='150' data-y='6000' data-scale='7' data-rotate='-40' data-duration='2000'>" + 
                             "</div>" +
                         "</div>"
                     );
-
-                    // $("#content_container").html("<div id='impress'>" + 
-                    //     "<div id='title' class='step' data-x='500' data-y='1500' data-rotate='0' data-scale='7' data-duration='1000'>" + 
-                    //     "</div>" +
-                    //     "<div id='place' class='step' data-x='500' data-y='3000' data-rotate='270' data-scale='7' data-duration='1000'>" +
-                    //     "</div>" +
-                    //     "<div id='hour' class='step' data-x='500' data-y='4500' data-rotate='90' data-scale='7' data-duration='1000'>" + 
-                    //     "</div>" +
-                    //     "<div id='overview' class='step' data-x='500' data-y='1500' data-scale='7' data-duration='3000'>" +
-                    //     "</div>" +
-                    //     "</div>"
-                    // );
 
                     $("#title").html(json_content[i].title);
                     $("#final_title").html(json_content[i].title);
@@ -226,12 +207,13 @@ function publishData(json_content,i)
 
                     setTimeout(function(){
                         $('#impress').fadeOut(1000);
+                        $("#content_container").html("");
                     }, 10000);
 
                      
-                    // setTimeout(function(){$( '#impress' ).jmpress('deinit');
-                    //                         dataContent(i);
-                    //                     },12000);    
+                    setTimeout(function(){$( '#impress' ).jmpress('deinit');
+                                             dataContent(i);
+                                         },12000);    
 
                 }
                 else
