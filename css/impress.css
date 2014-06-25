@@ -15,7 +15,7 @@
 }
 
 #overview {
-    opacity: 0;
+    opacity: 1;
 }
 
 .active {
@@ -62,5 +62,5 @@
     -moz-transition-delay:    0.5s;
     -ms-transition-delay:     0.5s;
     -o-transition-delay:      0.5s;
-    transition-delay:         2.5s;
+    transition-delay:         1.5s;
 }

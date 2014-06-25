@@ -32,9 +32,9 @@ $(document).ready(function() {
 
     setTimeout(fillFoods, 5000); 
     
-     // getContentsFromServer();
-     // selectContent();
-    shuffle(data);
+    // getContentsFromServer();
+    // selectContent();
+    //shuffle(data);
     dataContent(-1);
 
 });
@@ -157,8 +157,10 @@ function fillFoods(){
     }, 10000)
 }
 
-function dataContent(n){
-     var size = data.length;
+function dataContent(n)
+{
+    var size = data.length;
+
     if(i < size - 1)
     {
         i= n+1;
@@ -170,258 +172,241 @@ function dataContent(n){
     publishData(data,i);
 }
 
+function createVideo(json_content,i)
+{
+    var divide = json_content[i].video.split(".");
+    var extension = divide[divide.length-1];
+    $("#content_container").html("<div id='video_title'>" + json_content[i].title + "</div>" +
+                                "<video width='1920' autoplay='autoplay' id='myvideo'>" + 
+                                    "<source src='bin/videos_client/" + json_content[i].video +"' type='video/" + extension + "'>" +
+                                "</video>");
+   
+    var endtime = 30; 
+    var video = document.getElementById("myvideo");   
+
+    video.addEventListener("timeupdate", function()
+    {
+       if (this.currentTime >= endtime)
+        {
+            this.pause();
+            dataContent(i);
+        }
+    }, false);
+}
 
 function publishData(json_content,i)
 {
     if(json_content[i].category_id == 1)
+    {
+        $("#content_type_container").html("Eventos");
+
+        // Eventos
+        if(!json_content[i].video)
+        {    
+            if(json_content[i].id == 5 || json_content[i].id == 13)
             {
-                $("#content_type_container").html("Eventos");
+                 $("#content_container").html("<div id='impress'>" + 
+                        "<div id='title' class='step' data-x='150' data-y='6000' data-scale='7' data-rotate='90' data-duration='5000'>" + 
+                        "</div>" +
+                        "<div id='event_image' class='step' data-x='500' data-y='2000' data-z='4000' data-rotate='180' data-scale='1' data-duration='5000'>" +
+                        "</div>" +
+                        "<div id='place' class='step' data-x='500' data-y='2000' data-z='-3000' data-rotate='-150' data-scale='1' data-duration='5000'>" +
+                        "</div>" +
+                        "<div id='hour' class='step' data-x='5000' data-y='4000' data-rotate='300' data-scale='7' data-duration='5000'>" + 
+                        "</div>" +  
+                    "</div>"
+                );
 
-                // Eventos
-                if(!json_content[i].video)
-                {                  
-                    $("#content_container").html("<div id='impress'>" + 
-                            "<div id='title' class='step' data-x='150' data-y='6000' data-scale='7' data-rotate='90' data-duration='5000'>" + 
-                            "</div>" +
-                            "<div id='place' class='step' data-x='500' data-y='2000' data-z='-3000' data-rotate='-150' data-scale='1' data-duration='5000'>" +
-                            "</div>" +
-                            "<div id='hour' class='step' data-x='5000' data-y='4000' data-rotate='300' data-scale='7' data-duration='5000'>" + 
-                            "</div>" +                            
-                        "</div>"
-                    );
+                $("#title").html(json_content[i].title);
+                $("#final_title").html(json_content[i].title);
+                $("#place").html("<img src='img/icons/map_icon3 copy.png' width='100px'>" + "<br>" + json_content[i].event_site);
+                $("#event_image").html("<img src='img/"+ json_content[i].id + ".jpg' width='1000px'>");
 
-                    $("#title").html(json_content[i].title);
-                    $("#final_title").html(json_content[i].title);
-                    $("#place").html("<img src='img/map_icon3 copy.png' width='100px'>" + "<br>" + json_content[i].event_site);
+                var tmp = json_content[i].event_datetime;
+                var s = tmp.split("T");
+                var h = s[1].split(".");
+                var time = h[0].split(":");
+                var code = "<br><img src='img/icons/time-8-512 copy.png' width='150px'>" + "<br>" + "<p>" + "<b class='scaling'>" + s[0] + "</b>" + "</p><p>" + time[0] + "h" + time[1] + "</p>";
+                $("#hour").append(code);
 
-                    var tmp = json_content[i].event_datetime;
-                    var s = tmp.split("T");
-                    var h = s[1].split(".");
-                    var time = h[0].split(":");
-                    var code = "<br><img src='img/time-8-512 copy.png' width='150px'>" + "<br>" + "<p>" + "<b class='scaling'>" + s[0] + "</b>" + "</p><p>" + time[0] + "h" + time[1] + "</p>";
-                    $("#hour").append(code);
+                $('#impress').jmpress({hash: { use: false }});
 
-                    $('#impress').jmpress({hash: { use: false }});
-
-                     
-                    setTimeout(function(){$( '#impress' ).jmpress('deinit');
-                                             dataContent(i);
-                                         },17000);    
-
-                }
-                else
+                 
+                setTimeout(function()
                 {
-                    var divide = json_content[i].video.split(".");
-                    var extension = divide[divide.length-1];
-                   $("#content_container").html("<div id='video_title'>" + json_content[i].title + "</div>" +
-                                                "<video width='1920' autoplay='autoplay' id='myvideo'>" + 
-                                                    "<source src='bin/videos_client/" + json_content[i].video +"' type='video/" + extension + "'>" +
-                                                "</video>");
-                   
-                   var endtime = 20; 
-                   var video = document.getElementById("myvideo");   
+                    $( '#impress' ).jmpress('deinit');
+                     dataContent(i);
+                }, 22000);    
 
-                   video.addEventListener("timeupdate", function() {
-                       if (this.currentTime >= endtime) {
-                            this.pause();
-                            dataContent(i);
-                        }
-                    }, false);
-                    // video.onended = function(e) {
-
-                    //       dataContent(i);
-                    //     // code to navigate page
-                    //     } 
-                }
             }
+            else
+            {             
+                $("#content_container").html("<div id='impress'>" + 
+                        "<div id='title' class='step' data-x='150' data-y='6000' data-scale='7' data-rotate='90' data-duration='5000'>" + 
+                        "</div>" +
+                        "<div id='place' class='step' data-x='500' data-y='2000' data-z='-3000' data-rotate='-150' data-scale='1' data-duration='5000'>" +
+                        "</div>" +
+                        "<div id='hour' class='step' data-x='5000' data-y='4000' data-rotate='300' data-scale='7' data-duration='5000'>" + 
+                        "</div>" +                            
+                    "</div>"
+                );
 
-            else if(json_content[i].category_id == 2)
-            {
-                $("#content_type_container").html("Notícias");
+                $("#title").html(json_content[i].title);
+                $("#final_title").html(json_content[i].title);
+                $("#place").html("<img src='img/icons/map_icon3 copy.png' width='100px'>" + "<br>" + json_content[i].event_site);
 
-                //Noticias FCT
-               if(!json_content[i].video)
+                var tmp = json_content[i].event_datetime;
+                var s = tmp.split("T");
+                var h = s[1].split(".");
+                var time = h[0].split(":");
+                var code = "<br><img src='img/icons/time-8-512 copy.png' width='150px'>" + "<br>" + "<p>" + "<b class='scaling'>" + s[0] + "</b>" + "</p><p>" + time[0] + "h" + time[1] + "</p>";
+                $("#hour").append(code);
+
+                $('#impress').jmpress({hash: { use: false }});
+                 
+                setTimeout(function()
                 {
-                    $("#content_container").html("<div id='news_title'>" + json_content[i].title + "</div>");
-                    
-                    var pos = Math.floor((Math.random() * effectText.length));
-                    
-                    $('#news_title').textillate({  
-                        in:
-                        {
-                            effect: effectText[pos],
-                            sync: true
-                        }  
-                    }); 
-
-                    setTimeout(function()
-                    {
-                        $("#news_title").animate(
-                        { 
-                            'left': '-=2000px', 
-                            'top': '-=2000px'
-                        },
-                            "medium"
-                        ); 
-                    }, 6000);
-
-                    setTimeout(function()
-                    {
+                    $( '#impress' ).jmpress('deinit');
                         dataContent(i);
-                    }, 7500);  
-                }
-                else
-                {
-                     var divide = json_content[i].video.split(".");
-                    var extension = divide[divide.length-1];
-                    $("#content_container").html("<div id='video_title'>" + json_content[i].title + "</div>" +
-                                                "<video width='1920' autoplay='autoplay' id='myvideo'>" + 
-                                                    "<source src='bin/videos_client/" + json_content[i].video +"' type='video/" + extension + "'>" +
-                                                "</video>");
-
-                    var endtime = 20; 
-                   var video = document.getElementById("myvideo");   
-
-                   video.addEventListener("timeupdate", function() {
-                       if (this.currentTime >= endtime) {
-                            this.pause();
-                            dataContent(i);
-                        }
-                    }, false);
-                    // video.onended = function(e) {
-
-                    //       dataContent(i);
-                    //     // code to navigate page
-                    //     } 
-                }
+                }, 17000);    
             }
 
-            else if(json_content[i].category_id == 3)
+        }
+        else
+        {
+            createVideo(json_content,i);
+        }
+    }
+    else if(json_content[i].category_id == 2)
+    {
+        $("#content_type_container").html("Notícias");
+
+        //Noticias FCT
+        if(!json_content[i].video)
+        {
+            if(json_content[i].id == 12)
             {
-                //Avisos Pedagogicos
-                $("#content_type_container").html("Avisos Pedagógicos");
-                if(!json_content[i].video)
+                $("#content_container").html("<div id='news_title' >" + json_content[i].title + "</div>"
+                    + "<div id='news_image'><img src='img/12.jpg'></div>");
+            
+                var pos = Math.floor((Math.random() * effectText.length));
+                
+                $('#news_title').textillate({  
+                    in:
+                    {
+                        effect: effectText[pos],
+                        sync: true
+                    }  
+                }); 
+
+                $("#news_image").fadeIn(5000);
+
+                setTimeout(function()
                 {
-                    var description = json_content[i].description;
-
-                    var shortText = jQuery.trim(description).substring(0, 180)
-                        .split(" ").slice(0, -1).join(" ") + "...";
-
-                    $("#content_container").html("<div id='pedagogical_title'>" +
-                                                 json_content[i].title +
-                                                "</div>" +
-                                                "<div id='pedagogical_message'>" +
-                                                shortText +
-                                                "</div>");
-
-                    setTimeout(function(){dataContent(i)},4000);
-
-                }
-                else
-                {
-                    var divide = json_content[i].video.split(".");
-                    var extension = divide[divide.length-1];
-                    $("#content_container").html("<div id='video_title'>" + json_content[i].title + "</div>" +
-                                                "<video width='1920' autoplay='autoplay' id='myvideo'>" + 
-                                                    "<source src='bin/videos_client/" + json_content[i].video +"' type='video/" + extension + "'>" +
-                                                "</video>");
-
-                    var endtime = 20; 
-                   var video = document.getElementById("myvideo");   
-
-                   video.addEventListener("timeupdate", function() {
-                       if (this.currentTime >= endtime) {
-                            this.pause();
-                            dataContent(i);
-                        }
-                    }, false);
-                    // video.onended = function(e) {
-
-                    //       dataContent(i);
-                    //     // code to navigate page
-                    //     } 
-                }
-              
+                    dataContent(i);
+                }, 7500); 
             }
-            else if(json_content[i].category_id == 4)
-            {  
-                //Investigçao e trabalho
-                $("#content_type_container").html("Investigação e Trabalho");
-                if(!json_content[i].video)
-                {
-                    $("#content_container").html("<div id='work_title'>" +
-                                                 json_content[i].title +
-                                                "</div>" +
-                                                "<div id='work_limit_date'>" +
-                                                "Data Limite: " + json_content[i].limit_date +
-                                                "</div>");
-                    setTimeout(function(){dataContent(i)},4000);
-                }
-                else
-                {
-                    var divide = json_content[i].video.split(".");
-                    var extension = divide[divide.length-1];
-                    $("#content_container").html("<div id='video_title'>" + json_content[i].title + "</div>" +
-                                                "<video width='1920' autoplay='autoplay' id='myvideo'>" + 
-                                                    "<source src='bin/videos_client/" + json_content[i].video +"' type='video/" + extension + "'>" +
-                                                "</video>");
-
-                    var endtime = 20; 
-                   var video = document.getElementById("myvideo");   
-
-                   video.addEventListener("timeupdate", function() {
-                       if (this.currentTime >= endtime) {
-                            this.pause();
-                            dataContent(i);
-                        }
-                    }, false);
-                    // video.onended = function(e) {
-
-                    //       dataContent(i);
-                    //     // code to navigate page
-                    //     } 
-                }
-            }
-
-            else if(json_content[i].category_id == 5)
+            else
             {
-                //Reportagens
-                $("#content_type_container").html("Diversos");
-                if(!json_content[i].video)
+                $("#content_container").html("<div id='news_title'>" + json_content[i].title + "</div>");
+            
+                var pos = Math.floor((Math.random() * effectText.length));
+                
+                $('#news_title').textillate({  
+                    in:
+                    {
+                        effect: effectText[pos],
+                        sync: true
+                    }  
+                }); 
+
+                setTimeout(function()
                 {
-                    $("#content_container").html("<div id='pedagogical_title'>" +
-                                                 json_content[i].title +
-                                                "</div>" +
-                                                "<div id='pedagogical_message'>" +
-                                                json_content[i].description +
-                                                "</div>");
-                    setTimeout(function(){dataContent(i)},4000);
-                }
-                else
+                    $("#news_title").animate(
+                    { 
+                        'left': '-=2000px', 
+                        'top': '-=2000px'
+                    },
+                        "medium"
+                    ); 
+                }, 6000);
+
+                setTimeout(function()
                 {
-                     var divide = json_content[i].video.split(".");
-                    var extension = divide[divide.length-1];
-                    $("#content_container").html("<div id='video_title'>" + json_content[i].title + "</div>" +
-                                                "<video width='1920' autoplay='autoplay' id='myvideo'>" + 
-                                                    "<source src='bin/videos_client/" + json_content[i].video +"' type='video/" + extension + "'>" +
-                                                "</video>");
+                    dataContent(i);
+                }, 7500);  
+            }            
+        }
+        else
+        {
+            createVideo(json_content,i);
+        }
+    }
+    else if(json_content[i].category_id == 3)
+    {
+        //Avisos Pedagogicos
+        $("#content_type_container").html("Avisos Pedagógicos");
+        if(!json_content[i].video)
+        {
+            var description = json_content[i].description;
 
-                    var endtime = 20; 
-                   var video = document.getElementById("myvideo");   
+            var shortText = jQuery.trim(description).substring(0, 180)
+                .split(" ").slice(0, -1).join(" ") + "...";
 
-                   video.addEventListener("timeupdate", function() {
-                       if (this.currentTime >= endtime) {
-                            this.pause();
-                            dataContent(i);
-                        }
-                    }, false);
-                    // video.onended = function(e) {
+            $("#content_container").html("<div id='pedagogical_title'>" +
+                                         json_content[i].title +
+                                        "</div>" +
+                                        "<div id='pedagogical_message'>" +
+                                        shortText +
+                                        "</div>");
 
-                    //       dataContent(i);
-                    //     // code to navigate page
-                    //     } 
-                }
-            }
+            setTimeout(function(){dataContent(i)},4000);
+
+        }
+        else
+        {
+          createVideo(json_content,i);
+        }
+      
+    }
+    else if(json_content[i].category_id == 4)
+    {  
+        //Investigaçao e trabalho
+        $("#content_type_container").html("Investigação e Trabalho");
+        if(!json_content[i].video)
+        {
+            $("#content_container").html("<div id='work_title'>" +
+                                         json_content[i].title +
+                                        "</div>" +
+                                        "<div id='work_limit_date'>" +
+                                        "Data Limite: " + json_content[i].limit_date +
+                                        "</div>");
+            setTimeout(function(){dataContent(i)},4000);
+        }
+        else
+        {
+          createVideo(json_content,i);
+        }
+    }
+    else if(json_content[i].category_id == 5)
+    {
+        //Diversos
+        $("#content_type_container").html("Diversos");
+        if(!json_content[i].video)
+        {
+            $("#content_container").html("<div id='pedagogical_title'>" +
+                                         json_content[i].title +
+                                        "</div>" +
+                                        "<div id='pedagogical_message'>" +
+                                        json_content[i].description +
+                                        "</div>");
+            setTimeout(function(){dataContent(i)},4000);
+        }
+        else
+        {
+           createVideo(json_content,i);
+        }
+    }
 }
 
 function shuffle(sourceArray)
