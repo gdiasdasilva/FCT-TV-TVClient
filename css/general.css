@@ -15,6 +15,10 @@ body {
 	background-image:url('../img/5.png');
 }
 
+video::-webkit-media-controls {
+  display:none !important;
+}
+
 #content_container
 {
 	color: white;
@@ -55,7 +59,7 @@ body {
 	position: absolute;
 	left: 25px;
 	top: 170px;
-	font-size: 40px;
+	font-size: 45px;
 	color: white;
 	text-shadow:
    		-1px -1px 0 #000,  
@@ -161,4 +165,24 @@ body {
     	1px -1px 0 #000,
     	-1px 1px 0 #000,
      	1px 1px 0 #000;
+}
+
+#video_title{
+	position: absolute;
+	top: 750px;
+	left: 100px;
+	z-index: 1;
+	width: 1200px;
+	text-align: left;
+	font-size: 70px;
+	color: white;
+	text-shadow:
+   		-1px -1px 0 #000,  
+    	1px -1px 0 #000,
+    	-1px 1px 0 #000,
+     	1px 1px 0 #000;
+}
+
+#myvideo{
+	z-index: 0;
 }

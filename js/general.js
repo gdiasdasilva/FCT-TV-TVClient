@@ -213,17 +213,25 @@ function publishData(json_content,i)
                 {
                     var divide = json_content[i].video.split(".");
                     var extension = divide[divide.length-1];
-                   $("#content_container").html("<video width='1920'controls autoplay id='myvideo'>" + 
+                   $("#content_container").html("<div id='video_title'>" + json_content[i].title + "</div>" +
+                                                "<video width='1920' autoplay='autoplay' id='myvideo'>" + 
                                                     "<source src='bin/videos_client/" + json_content[i].video +"' type='video/" + extension + "'>" +
                                                 "</video>");
-
+                   
+                   var endtime = 20; 
                    var video = document.getElementById("myvideo");   
 
-                    video.onended = function(e) {
+                   video.addEventListener("timeupdate", function() {
+                       if (this.currentTime >= endtime) {
+                            this.pause();
+                            dataContent(i);
+                        }
+                    }, false);
+                    // video.onended = function(e) {
 
-                          dataContent(i);
-                        // code to navigate page
-                        } 
+                    //       dataContent(i);
+                    //     // code to navigate page
+                    //     } 
                 }
             }
 
@@ -266,23 +274,32 @@ function publishData(json_content,i)
                 {
                      var divide = json_content[i].video.split(".");
                     var extension = divide[divide.length-1];
-                   $("#content_container").html("<video width='1920'controls autoplay id='myvideo'>" + 
+                    $("#content_container").html("<div id='video_title'>" + json_content[i].title + "</div>" +
+                                                "<video width='1920' autoplay='autoplay' id='myvideo'>" + 
                                                     "<source src='bin/videos_client/" + json_content[i].video +"' type='video/" + extension + "'>" +
                                                 "</video>");
 
+                    var endtime = 20; 
                    var video = document.getElementById("myvideo");   
 
-                    video.onended = function(e) {
+                   video.addEventListener("timeupdate", function() {
+                       if (this.currentTime >= endtime) {
+                            this.pause();
+                            dataContent(i);
+                        }
+                    }, false);
+                    // video.onended = function(e) {
 
-                        dataContent(i);
-                        // code to navigate page
-                        } 
+                    //       dataContent(i);
+                    //     // code to navigate page
+                    //     } 
                 }
             }
 
             else if(json_content[i].category_id == 3)
             {
                 //Avisos Pedagogicos
+                $("#content_type_container").html("Avisos Pedagógicos");
                 if(!json_content[i].video)
                 {
                     var description = json_content[i].description;
@@ -304,23 +321,32 @@ function publishData(json_content,i)
                 {
                     var divide = json_content[i].video.split(".");
                     var extension = divide[divide.length-1];
-                   $("#content_container").html("<video width='1920'controls autoplay id='myvideo'>" + 
+                    $("#content_container").html("<div id='video_title'>" + json_content[i].title + "</div>" +
+                                                "<video width='1920' autoplay='autoplay' id='myvideo'>" + 
                                                     "<source src='bin/videos_client/" + json_content[i].video +"' type='video/" + extension + "'>" +
                                                 "</video>");
 
+                    var endtime = 20; 
                    var video = document.getElementById("myvideo");   
 
-                    video.onended = function(e) {
+                   video.addEventListener("timeupdate", function() {
+                       if (this.currentTime >= endtime) {
+                            this.pause();
+                            dataContent(i);
+                        }
+                    }, false);
+                    // video.onended = function(e) {
 
-                        dataContent(i);
-                        // code to navigate page
-                        } 
+                    //       dataContent(i);
+                    //     // code to navigate page
+                    //     } 
                 }
               
             }
             else if(json_content[i].category_id == 4)
             {  
                 //Investigçao e trabalho
+                $("#content_type_container").html("Investigação e Trabalho");
                 if(!json_content[i].video)
                 {
                     $("#content_container").html("<div id='work_title'>" +
@@ -335,23 +361,32 @@ function publishData(json_content,i)
                 {
                     var divide = json_content[i].video.split(".");
                     var extension = divide[divide.length-1];
-                   $("#content_container").html("<video width='1920'controls autoplay id='myvideo'>" + 
+                    $("#content_container").html("<div id='video_title'>" + json_content[i].title + "</div>" +
+                                                "<video width='1920' autoplay='autoplay' id='myvideo'>" + 
                                                     "<source src='bin/videos_client/" + json_content[i].video +"' type='video/" + extension + "'>" +
                                                 "</video>");
 
+                    var endtime = 20; 
                    var video = document.getElementById("myvideo");   
 
-                    video.onended = function(e) {
+                   video.addEventListener("timeupdate", function() {
+                       if (this.currentTime >= endtime) {
+                            this.pause();
+                            dataContent(i);
+                        }
+                    }, false);
+                    // video.onended = function(e) {
 
-                        dataContent(i);
-                        // code to navigate page
-                        } 
+                    //       dataContent(i);
+                    //     // code to navigate page
+                    //     } 
                 }
             }
 
             else if(json_content[i].category_id == 5)
             {
                 //Reportagens
+                $("#content_type_container").html("Diversos");
                 if(!json_content[i].video)
                 {
                     $("#content_container").html("<div id='pedagogical_title'>" +
@@ -366,17 +401,25 @@ function publishData(json_content,i)
                 {
                      var divide = json_content[i].video.split(".");
                     var extension = divide[divide.length-1];
-                   $("#content_container").html("<video width='1920'controls autoplay id='myvideo'>" + 
+                    $("#content_container").html("<div id='video_title'>" + json_content[i].title + "</div>" +
+                                                "<video width='1920' autoplay='autoplay' id='myvideo'>" + 
                                                     "<source src='bin/videos_client/" + json_content[i].video +"' type='video/" + extension + "'>" +
                                                 "</video>");
 
+                    var endtime = 20; 
                    var video = document.getElementById("myvideo");   
 
-                    video.onended = function(e) {
+                   video.addEventListener("timeupdate", function() {
+                       if (this.currentTime >= endtime) {
+                            this.pause();
+                            dataContent(i);
+                        }
+                    }, false);
+                    // video.onended = function(e) {
 
-                        dataContent(i);
-                        // code to navigate page
-                        } 
+                    //       dataContent(i);
+                    //     // code to navigate page
+                    //     } 
                 }
             }
 }
