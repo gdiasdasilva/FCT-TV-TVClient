@@ -11,8 +11,8 @@ body {
 	height: 1080px;
 	max-height: 1080px;
 	position: relative;
-	/*background-image:url('../img/3.jpg');*/
 	background-image:url('../img/background/4.png');
+	transition: background 5.0s linear;
 }
 
 video::-webkit-media-controls {

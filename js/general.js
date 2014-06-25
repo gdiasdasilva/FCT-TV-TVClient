@@ -36,6 +36,7 @@ $(document).ready(function() {
     // selectContent();
     //shuffle(data);
     dataContent(-1);
+    changeBackground();
 
 });
 
@@ -419,4 +420,20 @@ function shuffle(sourceArray)
         sourceArray[n] = temp;
     }
 }
+
+function changeBackground(){
+    var array_img = ['img/background/1.png','img/background/2.png','img/background/3.png','img/background/4.png'];
+
+    var j = 0;
+
+    setInterval(function(){
+
+        $("#outside_container").css('background-image', 'url(' + array_img[j] + ')');
+        if(j<array_img.length-1)
+            j++;
+        else
+            j=0;
+    }, 10000);
+}
+
 
