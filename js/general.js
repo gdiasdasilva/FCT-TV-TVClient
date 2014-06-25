@@ -40,7 +40,7 @@ $(document).ready(function() {
 });
 
 var feedNumber = 0;
-var animationNumber = 0;
+var effectText = ['fadeInLeftBig', 'fadeInRightBig', 'fadeInUpBig', 'fadeInDownBig', 'fadeIn', 'flash'];
 var feedURL = "";
 
 var foodTimes = 0;
@@ -158,8 +158,8 @@ function fillFoods(){
 }
 
 function dataContent(n){
-     var size = 4;
-    if(i<size-1)
+     var size = data.length;
+    if(i < size - 1)
     {
         i= n+1;
     }
@@ -203,8 +203,6 @@ function publishData(json_content,i)
 
                     $('#impress').jmpress({hash: { use: false }});
 
-                    
-
                      
                     setTimeout(function(){$( '#impress' ).jmpress('deinit');
                                              dataContent(i);
@@ -223,7 +221,7 @@ function publishData(json_content,i)
 
                     video.onended = function(e) {
 
-                         dataContent(i);
+                          dataContent(i);
                         // code to navigate page
                         } 
                 }
@@ -238,17 +236,29 @@ function publishData(json_content,i)
                 {
                     $("#content_container").html("<div id='news_title'>" + json_content[i].title + "</div>");
                     
- 
+                    var pos = Math.floor((Math.random() * effectText.length));
+                    
                     $('#news_title').textillate({  
                         in:
                         {
-                            effect: 'fadeInLeftBig',
+                            effect: effectText[pos],
+                            sync: true
                         }  
                     }); 
 
                     setTimeout(function()
                     {
-                        $("#news_title").fadeOut(1000);
+                        $("#news_title").animate(
+                        { 
+                            'left': '-=2000px', 
+                            'top': '-=2000px'
+                        },
+                            "medium"
+                        ); 
+                    }, 6000);
+
+                    setTimeout(function()
+                    {
                         dataContent(i);
                     }, 7500);  
                 }

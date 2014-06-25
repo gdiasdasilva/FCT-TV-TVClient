@@ -9,9 +9,10 @@ body {
 	margin: 0 auto;
 	width: 1920px;
 	height: 1080px;
+	max-height: 1080px;
 	position: relative;
 	/*background-image:url('../img/3.jpg');*/
-	background-image:url('../img/1.png');
+	background-image:url('../img/5.png');
 }
 
 #content_container
@@ -28,6 +29,7 @@ body {
 	position: absolute;
 	left: 25px;
 	top: 25px;
+	z-index: 1;
 }
 
 #logo img {
@@ -152,7 +154,7 @@ body {
 	top: 225px;
 	width: 1200px;
 	text-align: center;
-	font-size: 100px;
+	font-size: 70px;
 	color: white;
 	text-shadow:
    		-1px -1px 0 #000,  
