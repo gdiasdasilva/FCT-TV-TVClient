@@ -170,7 +170,7 @@ function dataContent(n)
     {
         i=0;
     }
-    publishData(data,i);
+    publishData(data, i);
 }
 
 function createVideo(json_content,i)
@@ -227,7 +227,12 @@ function publishData(json_content,i)
                 var s = tmp.split("T");
                 var h = s[1].split(".");
                 var time = h[0].split(":");
-                var code = "<br><img src='img/icons/time-8-512 copy.png' width='150px'>" + "<br>" + "<p>" + "<b class='scaling'>" + s[0] + "</b>" + "</p><p>" + time[0] + "h" + time[1] + "</p>";
+
+                if(time[0] == "00")
+                    var code = "<br><img src='img/icons/time-8-512 copy.png' width='150px'>" + "<br>" + "<p>" + "<b class='scaling'>" + s[0] + "</b>" + "</p>";
+                else
+                    var code = "<br><img src='img/icons/time-8-512 copy.png' width='150px'>" + "<br>" + "<p>" + "<b class='scaling'>" + s[0] + "</b>" + "</p><p>" + time[0] + "h" + time[1] + "</p>";
+                
                 $("#hour").append(code);
 
                 $('#impress').jmpress({hash: { use: false }});
@@ -238,7 +243,6 @@ function publishData(json_content,i)
                     $( '#impress' ).jmpress('deinit');
                      dataContent(i);
                 }, 22000);    
-
             }
             else
             {             
@@ -287,7 +291,7 @@ function publishData(json_content,i)
         {
             if(json_content[i].id == 12)
             {
-                $("#content_container").html("<div id='news_title' >" + json_content[i].title + "</div>"
+                $("#content_container").html("<div id='news_title_image' >" + json_content[i].title + "</div>"
                     + "<div id='news_image'><img src='img/12.jpg'></div>");
             
                 var pos = Math.floor((Math.random() * effectText.length));
@@ -323,13 +327,7 @@ function publishData(json_content,i)
 
                 setTimeout(function()
                 {
-                    $("#news_title").animate(
-                    { 
-                        'left': '-=2000px', 
-                        'top': '-=2000px'
-                    },
-                        "medium"
-                    ); 
+                    $("#news_title").fadeOut(2000);
                 }, 6000);
 
                 setTimeout(function()
@@ -361,7 +359,7 @@ function publishData(json_content,i)
                                         shortText +
                                         "</div>");
 
-            setTimeout(function(){dataContent(i)},4000);
+            setTimeout(function(){dataContent(i)},7500);
 
         }
         else
@@ -380,9 +378,9 @@ function publishData(json_content,i)
                                          json_content[i].title +
                                         "</div>" +
                                         "<div id='work_limit_date'>" +
-                                        "Data Limite: " + json_content[i].limit_date +
+                                        "Data Limite para candidaturas: " + json_content[i].limit_date +
                                         "</div>");
-            setTimeout(function(){dataContent(i)},4000);
+            setTimeout(function(){dataContent(i)},7500);
         }
         else
         {
@@ -397,11 +395,8 @@ function publishData(json_content,i)
         {
             $("#content_container").html("<div id='pedagogical_title'>" +
                                          json_content[i].title +
-                                        "</div>" +
-                                        "<div id='pedagogical_message'>" +
-                                        json_content[i].description +
                                         "</div>");
-            setTimeout(function(){dataContent(i)},4000);
+            setTimeout(function(){dataContent(i)},7500);
         }
         else
         {
@@ -429,11 +424,13 @@ function changeBackground(){
     setInterval(function(){
 
         $("#outside_container").css('background-image', 'url(' + array_img[j] + ')');
+        
         if(j<array_img.length-1)
             j++;
         else
             j=0;
-    }, 10000);
+
+    }, 60000);
 }
 
 
