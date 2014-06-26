@@ -37,6 +37,7 @@ $(document).ready(function() {
     //shuffle(data);
     dataContent(-1);
     changeBackground();
+    startTimer();
 
 });
 
@@ -162,14 +163,15 @@ function dataContent(n)
 {
     var size = data.length;
 
-    if(i < size - 1)
+    if(n < size - 1)
     {
-        i= n+1;
+        i = n+1;
     }
     else
     {
         i=0;
     }
+
     publishData(data, i);
 }
 
@@ -193,6 +195,11 @@ function createVideo(json_content,i)
             dataContent(i);
         }
     }, false);
+
+    setTimeout(function(){
+        $("video").fadeOut(4000);
+        $("#video_title").fadeOut(4000);
+    }, 27000);
 }
 
 function publishData(json_content,i)
@@ -236,8 +243,8 @@ function publishData(json_content,i)
                 $("#hour").append(code);
 
                 $('#impress').jmpress({hash: { use: false }});
-
-                 
+                $('#impress').fadeIn(2000);
+   
                 setTimeout(function()
                 {
                     $( '#impress' ).jmpress('deinit');
@@ -268,6 +275,8 @@ function publishData(json_content,i)
                 $("#hour").append(code);
 
                 $('#impress').jmpress({hash: { use: false }});
+                $('#impress').fadeIn(2000);
+
                  
                 setTimeout(function()
                 {
@@ -304,6 +313,7 @@ function publishData(json_content,i)
                     }  
                 }); 
 
+                $("#news_title_image").fadeIn(2000);
                 $("#news_image").fadeIn(5000);
 
                 setTimeout(function()
@@ -381,6 +391,10 @@ function publishData(json_content,i)
                                         "Data Limite para candidaturas: " + json_content[i].limit_date +
                                         "</div>");
             setTimeout(function(){dataContent(i)},7500);
+            setTimeout(function(){
+                $("#work_title").fadeOut(1000);
+                $("#work_limit_date").fadeOut(1000);
+            },6500);
         }
         else
         {
@@ -433,4 +447,16 @@ function changeBackground(){
     }, 60000);
 }
 
+function startTimer()
+{
+    var el = document.querySelector('.odometer');
 
+    od = new Odometer({
+      el: el,
+      value: 245,
+      duration: 240000,
+      animation: 'count'
+    });
+
+    $('.odometer').html(265);
+}
