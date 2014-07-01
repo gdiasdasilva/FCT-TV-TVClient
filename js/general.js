@@ -32,7 +32,6 @@ $(document).ready(function() {
 
     setTimeout(fillFoods, 5000); 
     
-    // getContentsFromServer();
     // selectContent();
     //shuffle(data);
     dataContent(-1);
@@ -171,7 +170,6 @@ function dataContent(n)
     {
         i=0;
     }
-
     publishData(data, i);
 }
 
@@ -211,7 +209,7 @@ function publishData(json_content,i)
         // Eventos
         if(!json_content[i].video)
         {    
-            if(json_content[i].id == 5 || json_content[i].id == 13)
+            if(json_content[i].tv_img_url)
             {
                  $("#content_container").html("<div id='impress'>" + 
                         "<div id='title' class='step' data-x='150' data-y='6000' data-scale='7' data-rotate='90' data-duration='5000'>" + 
@@ -226,9 +224,8 @@ function publishData(json_content,i)
                 );
 
                 $("#title").html(json_content[i].title);
-                $("#final_title").html(json_content[i].title);
                 $("#place").html("<img src='img/icons/map_icon3 copy.png' width='100px'>" + "<br>" + json_content[i].event_site);
-                $("#event_image").html("<img src='img/"+ json_content[i].id + ".jpg' width='1000px'>");
+                $("#event_image").html("<img src='"+ server + "/" +  json_content[i].tv_img_url + ".jpg' width='1000px'>");
 
                 var tmp = json_content[i].event_datetime;
                 var s = tmp.split("T");
@@ -250,6 +247,7 @@ function publishData(json_content,i)
                     $( '#impress' ).jmpress('deinit');
                      dataContent(i);
                 }, 22000);    
+
             }
             else
             {             
@@ -284,7 +282,6 @@ function publishData(json_content,i)
                         dataContent(i);
                 }, 17000);    
             }
-
         }
         else
         {
@@ -298,10 +295,10 @@ function publishData(json_content,i)
         //Noticias FCT
         if(!json_content[i].video)
         {
-            if(json_content[i].id == 12)
+            if(json_content[i].tv_img_url)
             {
                 $("#content_container").html("<div id='news_title_image' >" + json_content[i].title + "</div>"
-                    + "<div id='news_image'><img src='img/12.jpg'></div>");
+                    + "<div id='news_image'><img src='" + server + "/" + json_content[i].tv_img_url + "'></div>");
             
                 var pos = Math.floor((Math.random() * effectText.length));
                 
@@ -357,20 +354,49 @@ function publishData(json_content,i)
         $("#content_type_container").html("Avisos Pedagógicos");
         if(!json_content[i].video)
         {
-            var description = json_content[i].description;
+            if(json_content[i].tv_img_url)
+            {
+                $("#content_container").html("<div id='news_title_image' >" + json_content[i].title + "</div>"
+                    + "<div id='news_image'><img src='" + server + "/" + json_content[i].tv_img_url + "'></div>");
+            
+                var pos = Math.floor((Math.random() * effectText.length));
+                
+                $('#news_title').textillate({  
+                    in:
+                    {
+                        effect: effectText[pos],
+                        sync: true
+                    }  
+                }); 
 
-            var shortText = jQuery.trim(description).substring(0, 180)
-                .split(" ").slice(0, -1).join(" ") + "...";
+                $("#news_title_image").fadeIn(2000);
+                $("#news_image").fadeIn(5000);
 
-            $("#content_container").html("<div id='pedagogical_title'>" +
+                setTimeout(function()
+                {
+                    dataContent(i);
+                }, 7500); 
+
+            }
+
+            else
+            {
+                 var description = json_content[i].description;
+
+                  var shortText = jQuery.trim(description).substring(0, 180)
+                                 .split(" ").slice(0, -1).join(" ") + "...";
+
+                $("#content_container").html("<div id='pedagogical_title'>" +
                                          json_content[i].title +
                                         "</div>" +
                                         "<div id='pedagogical_message'>" +
                                         shortText +
                                         "</div>");
 
-            setTimeout(function(){dataContent(i)},7500);
+                 setTimeout(function(){dataContent(i)},7500);
 
+            }
+           
         }
         else
         {
@@ -384,17 +410,44 @@ function publishData(json_content,i)
         $("#content_type_container").html("Investigação e Trabalho");
         if(!json_content[i].video)
         {
-            $("#content_container").html("<div id='work_title'>" +
+            if(json_content[i].tv_img_url)
+            {
+                $("#content_container").html("<div id='news_title_image' >" + json_content[i].title + "</div>"
+                    + "<div id='news_image'><img src='" + server + "/" + json_content[i].tv_img_url + "'></div>");
+            
+                var pos = Math.floor((Math.random() * effectText.length));
+                
+                $('#news_title').textillate({  
+                    in:
+                    {
+                        effect: effectText[pos],
+                        sync: true
+                    }  
+                }); 
+
+                $("#news_title_image").fadeIn(2000);
+                $("#news_image").fadeIn(5000);
+
+                setTimeout(function()
+                {
+                    dataContent(i);
+                }, 7500); 
+            }
+            else
+            {
+                 $("#content_container").html("<div id='work_title'>" +
                                          json_content[i].title +
                                         "</div>" +
                                         "<div id='work_limit_date'>" +
                                         "Data Limite para candidaturas: " + json_content[i].limit_date +
                                         "</div>");
-            setTimeout(function(){dataContent(i)},7500);
-            setTimeout(function(){
-                $("#work_title").fadeOut(1000);
-                $("#work_limit_date").fadeOut(1000);
-            },6500);
+                setTimeout(function(){dataContent(i)},7500);
+                setTimeout(function(){
+                     $("#work_title").fadeOut(1000);
+                     $("#work_limit_date").fadeOut(1000);
+                 },6500);
+            }
+           
         }
         else
         {
@@ -407,10 +460,37 @@ function publishData(json_content,i)
         $("#content_type_container").html("Diversos");
         if(!json_content[i].video)
         {
-            $("#content_container").html("<div id='pedagogical_title'>" +
+            if(json_content[i].tv_img_url)
+            {
+                $("#content_container").html("<div id='news_title_image' >" + json_content[i].title + "</div>"
+                    + "<div id='news_image'><img src='" + server + "/" + json_content[i].tv_img_url + "'></div>");
+            
+                var pos = Math.floor((Math.random() * effectText.length));
+                
+                $('#news_title').textillate({  
+                    in:
+                    {
+                        effect: effectText[pos],
+                        sync: true
+                    }  
+                }); 
+
+                $("#news_title_image").fadeIn(2000);
+                $("#news_image").fadeIn(5000);
+
+                setTimeout(function()
+                {
+                    dataContent(i);
+                }, 7500); 
+            }
+            else
+            {
+                 $("#content_container").html("<div id='pedagogical_title'>" +
                                          json_content[i].title +
                                         "</div>");
-            setTimeout(function(){dataContent(i)},7500);
+                setTimeout(function(){dataContent(i)},7500);
+            }
+           
         }
         else
         {
