@@ -529,14 +529,13 @@ function changeBackground(){
 
 function startTimer()
 {
-    var el = document.querySelector('.odometer');
+    setInterval(function() {
+    
+        $(".odometer").text(parseInt($(".odometer").text()) +1);
 
-    od = new Odometer({
-      el: el,
-      value: 245,
-      duration: 240000,
-      animation: 'count'
-    });
-
-    $('.odometer').html(265);
+        $("#footer_number").css('background-color', 'red'); 
+        setTimeout(function(){
+            $("#footer_number").css('background-color', 'black');
+        },400);   
+    }, 4000);
 }

@@ -86,10 +86,10 @@ video::-webkit-media-controls {
 	font-size: 100px;
 	color: white;
 	text-shadow:
-   		-1px -1px 0 #000,  
-    	1px -1px 0 #000,
-    	-1px 1px 0 #000,
-     	1px 1px 0 #000;
+    1px  1px 5px black,
+    1px -1px 5px black,
+   -1px  1px 5px black,
+   -1px -1px 5px black;
 }
 
 #pedagogical_message {
@@ -218,6 +218,12 @@ video::-webkit-media-controls {
 	z-index: 0;
 }
 
+#letter{
+	margin-left: 20px;
+	float: left;
+}
+
 .odometer{
+	margin-right: 15px;
 	top: -5px;
 }
