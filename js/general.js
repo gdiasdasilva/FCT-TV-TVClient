@@ -30,7 +30,7 @@ $(document).ready(function() {
     //     $("#sidebar").fadeIn(3000);
     // }, 2000);
 
-    setTimeout(fillFoods, 5000); 
+    // setTimeout(fillFoods, 5000); 
     
     // selectContent();
     //shuffle(data);
@@ -170,6 +170,7 @@ function dataContent(n)
     {
         i=0;
     }
+    setTimeout(function(){load_js()}, 30000);
     publishData(data, i);
 }
 
@@ -225,7 +226,7 @@ function publishData(json_content,i)
 
                 $("#title").html(json_content[i].title);
                 $("#place").html("<img src='img/icons/map_icon3 copy.png' width='100px'>" + "<br>" + json_content[i].event_site);
-                $("#event_image").html("<img src='"+ server + "/" +  json_content[i].tv_img_url + ".jpg' width='1000px'>");
+                $("#event_image").html("<img src='"+ server + json_content[i].tv_img_url + "' width='1000px'>");
 
                 var tmp = json_content[i].event_datetime;
                 var s = tmp.split("T");
@@ -298,7 +299,7 @@ function publishData(json_content,i)
             if(json_content[i].tv_img_url)
             {
                 $("#content_container").html("<div id='news_title_image' >" + json_content[i].title + "</div>"
-                    + "<div id='news_image'><img src='" + server + "/" + json_content[i].tv_img_url + "'></div>");
+                    + "<div id='news_image'><img src='" + server + json_content[i].tv_img_url + "'></div>");
             
                 var pos = Math.floor((Math.random() * effectText.length));
                 
@@ -357,7 +358,7 @@ function publishData(json_content,i)
             if(json_content[i].tv_img_url)
             {
                 $("#content_container").html("<div id='news_title_image' >" + json_content[i].title + "</div>"
-                    + "<div id='news_image'><img src='" + server + "/" + json_content[i].tv_img_url + "'></div>");
+                    + "<div id='news_image'><img src='" + server + json_content[i].tv_img_url + "'></div>");
             
                 var pos = Math.floor((Math.random() * effectText.length));
                 
@@ -413,7 +414,7 @@ function publishData(json_content,i)
             if(json_content[i].tv_img_url)
             {
                 $("#content_container").html("<div id='news_title_image' >" + json_content[i].title + "</div>"
-                    + "<div id='news_image'><img src='" + server + "/" + json_content[i].tv_img_url + "'></div>");
+                    + "<div id='news_image'><img src='" + server + json_content[i].tv_img_url + "'></div>");
             
                 var pos = Math.floor((Math.random() * effectText.length));
                 
@@ -463,7 +464,7 @@ function publishData(json_content,i)
             if(json_content[i].tv_img_url)
             {
                 $("#content_container").html("<div id='news_title_image' >" + json_content[i].title + "</div>"
-                    + "<div id='news_image'><img src='" + server + "/" + json_content[i].tv_img_url + "'></div>");
+                    + "<div id='news_image'><img src='" + server + json_content[i].tv_img_url + "'></div>");
             
                 var pos = Math.floor((Math.random() * effectText.length));
                 
@@ -538,4 +539,15 @@ function startTimer()
             $("#footer_number").css('background-color', 'black');
         },400);   
     }, 4000);
+}
+
+
+function load_js()
+{
+    $('script[src="' + 'bin/data.js' + '"]').remove();
+    var head= document.getElementsByTagName('head')[0];
+    var script= document.createElement('script');
+    script.type= 'text/javascript';
+    script.src= 'bin/data.js';
+    head.appendChild(script);
 }
