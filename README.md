@@ -14,8 +14,8 @@ FCT TV — TV Client
 Our solution has 4 different parts:
 
 * TV Client (this one)
-* <a href="https://github.com/gdiasdasilva/CampusTV-WebServer">Ruby on Rails Web server</a>
-* <a href="https://github.com/gdiasdasilva/python-crawlers">Information crawlers (in Python)</a>
+* <a href="https://github.com/gdiasdasilva/CampusTV-WebServer" target="_blank">Ruby on Rails Web server</a>
+* <a href="https://github.com/gdiasdasilva/python-crawlers" target="_blank">Information crawlers (in Python)</a>
 * iPhone app
 
 ##Description
