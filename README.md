@@ -1,13 +1,13 @@
 FCT TV — TV Client
 =================
 
-###Authors
+##Authors
 
 * Gonçalo Dias da Silva
 * João Francisco Pinto
 * Rui Carvalho
 
-###General info
+##General info
 
 **FCT TV** is an idea for a campus' TV at FCT-UNL, which will satisfy the student's needs and raise the awareness for the interesting events that are offered every day.
 
