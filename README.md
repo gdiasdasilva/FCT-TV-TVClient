@@ -1,11 +1,7 @@
 FCT TV — TV Client
 =================
 
-##Authors
-
-* Gonçalo Dias da Silva
-* João Francisco Pinto
-* Rui Carvalho
+<img src="https://dl.dropboxusercontent.com/u/2937374/GitHub%20Images/Logo.png" width="200px">
 
 ##General info
 
@@ -31,3 +27,9 @@ The TV component is based on HTML, CSS and JavaScript. The information that is s
 The proxy is implemented in Java and downloads the videos (with <a href="https://github.com/np1/pafy" target="_blank">pafy - python</a>) and information that is needed.
 
 You can run the Java client (proxy) with: `java -Xmx1g -cp .:java-json.jar pi.Client client_name your_machine_IP`
+
+##Authors
+
+* Gonçalo Dias da Silva
+* João Francisco Pinto
+* Rui Carvalho
